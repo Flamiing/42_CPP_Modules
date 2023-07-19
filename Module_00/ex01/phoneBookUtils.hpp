@@ -1,30 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   phoneBookUtils.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/19 16:25:39 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/19 21:12:50 by alaaouam         ###   ########.fr       */
+/*   Created: 2023/07/19 21:12:07 by alaaouam          #+#    #+#             */
+/*   Updated: 2023/07/19 21:19:20 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#ifndef PHONEBOOKUTILS_HPP
+# define PHONEBOOKUTILS_HPP
 
-# include "Contact.hpp"
-
-class PhoneBook
-{
-	private:
-		Contact	_contacts[8];
-		int	_index;
-	public:
-		PhoneBook(void);
-		~PhoneBook(void);
-		void	add(void);
-		void	search(void);
-};
+void	displayContacts(Contact contacts[]);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:25:19 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/19 20:34:20 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/19 21:16:39 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,92 +24,6 @@ Contact::~Contact(void)
 int	Contact::exist(void)
 {
 	return (this->_exist);
-}
-
-void	Contact::setFirstName(void)
-{
-	std::string	input;
-
-	this->_exist = 1;
-	input = "";
-	while (!std::cin.eof())
-	{
-		std::cout << "Enter a first name: ";
-		std::cin >> input;
-		if (input != "")
-		{
-			this->_firstName = input;
-			break ;
-		}
-	}
-}
-
-void	Contact::setLastName(void)
-{
-	std::string	input;
-
-	input = "";
-	while (!std::cin.eof())
-	{
-		std::cout << "Enter a last name: ";
-		std::cin >> input;
-		if (input != "")
-		{
-			this->_lastName = input;
-			break ;
-		}
-	}
-}
-
-void	Contact::setNickname(void)
-{
-	std::string	input;
-
-	input = "";
-	while (!std::cin.eof())
-	{
-		std::cout << "Enter a nickname: ";
-		std::cin >> input;
-		if (input != "")
-		{
-			this->_nickname = input;
-			break ;
-		}
-	}
-}
-
-void	Contact::setPhoneNumber(void)
-{
-	std::string	input;
-
-	input = "";
-	while (!std::cin.eof())
-	{
-		std::cout << "Enter a phone number: ";
-		std::cin >> input;
-		if (input != "")
-		{
-			this->_phoneNumber = input;
-			break ;
-		}
-	}
-}
-
-void	Contact::setDarkestSecret(void)
-{
-	std::string	input;
-
-	input = "";
-	while (!std::cin.eof())
-	{
-		std::cout << "Enter " << this->_firstName << "'s darkest secret: ";
-		std::cin >> input;
-		if (input != "")
-		{
-			this->_darkestSecret = input;
-			break ;
-		}
-	}
 }
 
 void	Contact::printContact(void)

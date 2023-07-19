@@ -6,7 +6,7 @@
 #    By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/19 13:11:44 by alaaouam          #+#    #+#              #
-#    Updated: 2023/07/19 19:17:46 by alaaouam         ###   ########.fr        #
+#    Updated: 2023/07/19 21:17:16 by alaaouam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ COLOR_OFF = \033[0m
 
 NAME = phonebook
 
-SRC = main.cpp PhoneBook.cpp Contact.cpp
+SRC = main.cpp PhoneBook.cpp Contact.cpp ContactUtils.cpp phoneBookUtils.cpp
 
 OBJ = $(SRC:.cpp=.o)
 

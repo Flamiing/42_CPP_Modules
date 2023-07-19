@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:25:50 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/19 20:51:56 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/19 21:46:35 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,18 @@ int	main(void)
 	PhoneBook phoneBook;
 	std::string	input;
 	
+	input = "";
 	while (input != "EXIT")
 	{
 		std::cout << "Please enter an option: ";
 		std::cin >> input;
+		std::cout << input << std::endl;
 		if (input == "ADD")
 			phoneBook.add();
 		else if (input == "SEARCH")
 			phoneBook.search();
+		else if (!std::cin.eof() && input != "EXIT")
+			std::cout << "Wrong input!" << std::endl;
 		if (std::cin.eof())
 		{
 			std::cout << std::endl;

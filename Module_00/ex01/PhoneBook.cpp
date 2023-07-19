@@ -6,11 +6,12 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:25:42 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/19 20:49:34 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/19 21:47:21 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
+#include "phoneBookUtils.hpp"
 
 PhoneBook::PhoneBook(void)
 {
@@ -26,6 +27,8 @@ void	PhoneBook::add(void)
 {
 	Contact	newContact;
 	
+	if (this->_index > 7)
+		std::cout << "WARNING: The oldest contact will be replaced by the new one" << std::endl;
 	newContact.setFirstName();
 	newContact.setLastName();
 	newContact.setNickname();
@@ -40,29 +43,8 @@ void	PhoneBook::add(void)
 void	PhoneBook::search(void)
 {
 	std::string	input;
-	int	pos;
-	
-	std::cout << "+===========================================+" << std::endl;
-	std::cout << "|   INDEX  |FIRST NAME| LAST NAME| NICKNAME |" << std::endl;
-	std::cout << "|==========|==========|==========|==========|" << std::endl;
-	pos = 0;
-	while (pos < 8)
-	{
-		std::cout << "|" << "    " << pos;
-		std::cout << "     |";
-		if (this->_contacts[pos].exist() == 1)
-		{
-			this->_contacts[pos].displayFirstName();
-			this->_contacts[pos].displayLastName();
-			this->_contacts[pos].displayNickname();
-		}
-		else
-			std::cout << "          |          |          |" << std::endl;
-		if (pos < 7)
-			std::cout << "|==========|==========|==========|==========|" << std::endl;
-		pos++;
-	}
-	std::cout << "+===========================================+" << std::endl;
+
+	displayContacts(this->_contacts);
 	while (!std::cin.eof())
 	{
 		std::cout << "Select an index or type 'EXIT' to leave: ";
