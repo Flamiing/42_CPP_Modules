@@ -6,7 +6,7 @@
 #    By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/19 13:11:44 by alaaouam          #+#    #+#              #
-#    Updated: 2023/07/19 14:43:29 by alaaouam         ###   ########.fr        #
+#    Updated: 2023/07/19 15:51:39 by alaaouam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,8 @@ SRC = megaphone.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
-CC = c++
-CFLAGS =  -Wall -Wextra -Werror -std=c++98
+CPP = c++
+CPPFLAGS =  -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
 #	RULES	#
@@ -32,7 +32,7 @@ RM = rm -rf
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	@$(CPP) $(CPPFLAGS) $(OBJ) -o $(NAME)
 	@echo "$(GREEN)<+> $(NAME) has been created! <+>$(COLOR_OFF)"
 
 clean:
