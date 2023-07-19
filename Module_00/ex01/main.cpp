@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:25:50 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/19 21:46:35 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/19 21:57:04 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	main(void)
 	{
 		std::cout << "Please enter an option: ";
 		std::cin >> input;
-		std::cout << input << std::endl;
 		if (input == "ADD")
 			phoneBook.add();
 		else if (input == "SEARCH")
