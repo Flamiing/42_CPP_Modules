@@ -1,38 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/19 13:14:38 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/19 19:10:48 by alaaouam         ###   ########.fr       */
+/*   Created: 2023/07/19 16:25:50 by alaaouam          #+#    #+#             */
+/*   Updated: 2023/07/19 19:19:06 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#include "PhoneBook.hpp"
 
-int	main(int argc, char **argv)
+int	main(void)
 {
-	int	count;
-	int	pos;
+	PhoneBook phoneBook;
+	std::string	input;
 	
-	if (argc == 1)
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::std::endl;
-	else
+	while (input != "EXIT")
 	{
-		count = 1;
-		while (count < argc)
+		std::cout << "Please enter an option: ";
+		std::cin >> input;
+		if (input == "ADD")
+			phoneBook.add();
+		else if (input == "SEARCH")
+			phoneBook.search();
+		if (std::cin.eof())
 		{
-			pos = 0;
-			while (pos < (int)strlen(argv[count]))
-			{
-				std::cout << (char)toupper(argv[count][pos]);
-				pos++;
-			}
-			count++;
+			std::cout << std::endl;
+			return (0);
 		}
-		std::cout << std::std::endl;
 	}
 	return (0);
 }
