@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:25:19 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/19 21:16:39 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/19 22:28:24 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,22 +28,25 @@ int	Contact::exist(void)
 
 void	Contact::printContact(void)
 {
+	std::cout << std::endl << "===============/ CONTACT \\===============" << std::endl;
 	std::cout << "First Name:\t" << this->_firstName << std::endl;
 	std::cout << "Last Name:\t" << this->_lastName << std::endl;
 	std::cout << "Nickname:\t" << this->_nickname << std::endl;
 	std::cout << "Phone Number:\t" << this->_phoneNumber << std::endl;
-	std::cout << "Darkest Secret:\t" << this->_darkestSecret << std::endl;
+	std::cout << "Darkest Secret:\t" << this->_darkestSecret << std::endl << std::endl;
 }
 
 void	Contact::displayFirstName(void)
 {
 	size_t	count;
+	std::string	resized;
 	
 	count = 0;
 	if (this->_firstName.length() > 10)
 	{
-		this->_firstName.resize(9);
-		std::cout << this->_firstName << ".|";
+		resized = this->_firstName;
+		resized.resize(9);
+		std::cout << resized << ".|";
 	}
 	else
 	{
@@ -60,12 +63,14 @@ void	Contact::displayFirstName(void)
 void	Contact::displayLastName(void)
 {
 	size_t	count;
+	std::string	resized;
 	
 	count = 0;
 	if (this->_lastName.length() > 10)
 	{
-		this->_lastName.resize(9);
-		std::cout << this->_lastName << ".|";
+		resized = this->_lastName;
+		resized.resize(9);
+		std::cout << resized << ".|";
 	}
 	else
 	{
@@ -83,12 +88,14 @@ void	Contact::displayLastName(void)
 void	Contact::displayNickname(void)
 {
 	size_t	count;
+	std::string	resized;
 	
 	count = 0;
 	if (this->_nickname.length() > 10)
 	{
-		this->_nickname.resize(9);
-		std::cout << this->_nickname << ".|";
+		resized = this->_nickname;
+		resized.resize(9);
+		std::cout << resized << ".|";
 	}
 	else
 	{

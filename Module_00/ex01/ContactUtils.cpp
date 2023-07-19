@@ -6,11 +6,12 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 21:16:19 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/19 21:57:15 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/19 22:09:02 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
+#include "phoneBookUtils.hpp"
 
 void	Contact::setFirstName(void)
 {
@@ -21,7 +22,7 @@ void	Contact::setFirstName(void)
 	while (!std::cin.eof())
 	{
 		std::cout << "Enter a first name: ";
-		std::cin >> input;
+		input = getInput();
 		if (input != "")
 		{
 			this->_firstName = input;
@@ -38,7 +39,7 @@ void	Contact::setLastName(void)
 	while (!std::cin.eof())
 	{
 		std::cout << "Enter a last name: ";
-		std::cin >> input;
+		input = getInput();
 		if (input != "")
 		{
 			this->_lastName = input;
@@ -55,7 +56,7 @@ void	Contact::setNickname(void)
 	while (!std::cin.eof())
 	{
 		std::cout << "Enter a nickname: ";
-		std::cin >> input;
+		input = getInput();
 		if (input != "")
 		{
 			this->_nickname = input;
@@ -72,7 +73,7 @@ void	Contact::setPhoneNumber(void)
 	while (!std::cin.eof())
 	{
 		std::cout << "Enter a phone number: ";
-		std::cin >> input;
+		input = getInput();
 		if (input != "")
 		{
 			this->_phoneNumber = input;
@@ -89,7 +90,7 @@ void	Contact::setDarkestSecret(void)
 	while (!std::cin.eof())
 	{
 		std::cout << "Enter " << this->_firstName << "'s darkest secret: ";
-		std::cin >> input;
+		input = getInput();
 		if (input != "")
 		{
 			this->_darkestSecret = input;

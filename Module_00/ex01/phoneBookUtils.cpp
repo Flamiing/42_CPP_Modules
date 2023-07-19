@@ -6,11 +6,25 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 21:05:58 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/19 21:47:56 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/19 22:07:00 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
+
+std::string	getInput(void)
+{
+	std::string	input;
+	char	c;
+	
+	while (std::cin.get(c)) 
+	{
+		if (c == '\n')
+			break ;
+		input += c;
+	}
+	return (input);
+}
 
 void	displayContacts(Contact contacts[])
 {

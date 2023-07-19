@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:25:42 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/19 21:47:21 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/19 22:21:55 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	PhoneBook::search(void)
 	while (!std::cin.eof())
 	{
 		std::cout << "Select an index or type 'EXIT' to leave: ";
-		std::cin >> input;
+		input = getInput();
 		if (input == "EXIT")
 			break ;
 		if (input.size() == 1 && input[0] >= '0' && input[0] <= '7' && this->_contacts[input[0] - '0'].exist() == 1)
@@ -56,7 +56,15 @@ void	PhoneBook::search(void)
 			this->_contacts[input[0] - '0'].printContact();
 			break ;
 		}
-		else
-			std::cout << "Wrong index!" << std::endl;
+		else if (!std::cin.eof())
+		{
+			if (this->_contacts[0].exist() == 0)
+			{
+				std::cout << "There are no contacts" << std::endl;
+				break ;
+			}
+			else
+				std::cout << "Wrong index! Try again!" << std::endl;
+		}
 	}
 }
