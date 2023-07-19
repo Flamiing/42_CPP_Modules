@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:25:42 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/19 22:21:55 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/20 01:34:59 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,14 @@ void	PhoneBook::search(void)
 		{
 			if (this->_contacts[0].exist() == 0)
 			{
-				std::cout << "There are no contacts" << std::endl;
+				if (input[0] >= '0' && input[0] <= '7')
+					std::cout << "There are no contacts" << std::endl;
+				else
+					std::cout << "\"" << input << "\" is not a valid index!" << std::endl;
 				break ;
 			}
 			else
-				std::cout << "Wrong index! Try again!" << std::endl;
+				std::cout << "Invalid index! Try again!" << std::endl;
 		}
 	}
 }

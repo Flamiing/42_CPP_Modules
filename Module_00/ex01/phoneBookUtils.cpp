@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 21:05:58 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/19 22:07:00 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/20 01:37:51 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,14 @@ void	displayContacts(Contact contacts[])
 	int	pos;
 	
 	std::cout << "+===========================================+" << std::endl;
-	std::cout << "|   INDEX  |FIRST NAME| LAST NAME| NICKNAME |" << std::endl;
+	std::cout << "|" << std::setw(10) << "INDEX" << "|" << std::setw(10) << "FIRST NAME";
+	std::cout << "|" << std::setw(10) << "LAST NAME" << "|" << std::setw(10) << "NICKNAME" << "|" << std::endl;
 	std::cout << "|==========|==========|==========|==========|" << std::endl;
 	pos = 0;
 	while (pos < 8)
 	{
-		std::cout << "|" << "    " << pos;
-		std::cout << "     |";
+		std::cout << "|" << std::setw(10) << pos;
+		std::cout << "|" << std::setw(11);
 		if (contacts[pos].exist() == 1)
 		{
 			contacts[pos].displayFirstName();
@@ -45,7 +46,7 @@ void	displayContacts(Contact contacts[])
 			contacts[pos].displayNickname();
 		}
 		else
-			std::cout << "          |          |          |" << std::endl;
+			std::cout << "|" << std::setw(11)  << "|"  << std::setw(11) << "|" << std::endl;
 		if (pos < 7)
 			std::cout << "|==========|==========|==========|==========|" << std::endl;
 		pos++;

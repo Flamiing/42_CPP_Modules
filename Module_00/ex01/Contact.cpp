@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:25:19 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/19 22:28:24 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/20 01:18:05 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,74 +38,54 @@ void	Contact::printContact(void)
 
 void	Contact::displayFirstName(void)
 {
-	size_t	count;
 	std::string	resized;
 	
-	count = 0;
 	if (this->_firstName.length() > 10)
 	{
 		resized = this->_firstName;
-		resized.resize(9);
-		std::cout << resized << ".|";
+		resized.resize(10);
+		resized[9] = '.';
+		std::cout << std::setw(10) << resized << "|";
 	}
 	else
 	{
-		std::cout << this->_firstName;
-		while (count < (10 - this->_firstName.length()))
-		{
-			std::cout << " ";
-			count++;
-		}
+		std::cout << std::setw(10) << this->_firstName;
 		std::cout << "|";
 	}
 }
 
 void	Contact::displayLastName(void)
 {
-	size_t	count;
 	std::string	resized;
 	
-	count = 0;
 	if (this->_lastName.length() > 10)
 	{
 		resized = this->_lastName;
-		resized.resize(9);
-		std::cout << resized << ".|";
+		resized.resize(10);
+		resized[9] = '.';
+		std::cout << std::setw(10) << resized << "|";
 	}
 	else
 	{
-		std::cout << this->_lastName;
-		count = 0;
-		while (count < (10 - this->_lastName.length()))
-		{
-			std::cout << " ";
-			count++;
-		}
+		std::cout << std::setw(10) << this->_lastName;
 		std::cout << "|";
 	}
 }
 
 void	Contact::displayNickname(void)
 {
-	size_t	count;
 	std::string	resized;
 	
-	count = 0;
 	if (this->_nickname.length() > 10)
 	{
 		resized = this->_nickname;
-		resized.resize(9);
-		std::cout << resized << ".|";
+		resized.resize(10);
+		resized[9] = '.';
+		std::cout << std::setw(10) << resized << "|";
 	}
 	else
 	{
-		std::cout << this->_nickname;
-		count = 0;
-		while (count < (10 - this->_nickname.length()))
-		{
-			std::cout << " ";
-			count++;
-		}
+		std::cout << std::setw(10) << this->_nickname;
 		std::cout << "|";
 	}
 	std::cout << std::endl;
