@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 22:33:45 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/19 23:43:04 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/20 00:06:23 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,10 @@ void	Account::_displayTimestamp(void)
 {
 	std::time_t	now;
 	char	buffer[80];
-
+	
+	now = std::time(nullptr);
 	std::strftime(buffer, 80, "[%Y%m%d_%H%M%S]", std::localtime(&now));
-	std::cout << buffer;
+	std::cout << buffer << " ";
 }
 
 void	Account::displayAccountsInfos(void)
@@ -88,21 +89,21 @@ void	Account::makeDeposit(int deposit)
 {
 	Account::_displayTimestamp();
 	std::cout << "index:" << this->_accountIndex << ";p_amount:" << this->checkAmount();
-	std::cout << ";deposit" << deposit << ";";
+	std::cout << ";deposit:" << deposit << ";";
 	this->_amount += deposit;
 	this->_nbDeposits++;
 	Account::_totalAmount += deposit;
 	Account::_totalNbDeposits++;
-	std::cout << "amount" << this->checkAmount() << ";" << ";nb_deposits:" << this->_nbDeposits << std::endl;
+	std::cout << "amount:" << this->checkAmount() << ";" << "nb_deposits:" << this->_nbDeposits << std::endl;
 }
 
 bool	Account::makeWithdrawal(int withdrawal)
 {
+	Account::_displayTimestamp();
 	if (withdrawal <= this->checkAmount())
 	{
-		Account::_displayTimestamp();
 		std::cout << "index:" << this->_accountIndex << ";p_amount:" << this->checkAmount();
-		std::cout << ";withdrawal" << withdrawal << ";";
+		std::cout << ";withdrawal:" << withdrawal << ";";
 		this->_amount -= withdrawal;
 		this->_nbWithdrawals++;
 		std::cout << "amount:" << this->checkAmount() << ";nb_withdrawals:" << this->_nbWithdrawals << std::endl;
@@ -111,7 +112,11 @@ bool	Account::makeWithdrawal(int withdrawal)
 		return (true);
 	}
 	else
+	{
+		std::cout << "index:" << this->_accountIndex << ";p_amount:" << this->checkAmount();
+		std::cout << ";withdrawal:" << "refused" << std::endl;
 		return (false);
+	}
 }
 
 void	Account::displayStatus(void) const
