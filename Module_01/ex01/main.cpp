@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   newZombie.cpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/20 11:42:13 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/20 12:37:48 by alaaouam         ###   ########.fr       */
+/*   Created: 2023/07/20 11:41:40 by alaaouam          #+#    #+#             */
+/*   Updated: 2023/07/20 13:16:41 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-Zombie	*newZombie(std::string name)
+int	main(void)
 {
-	return (new Zombie(name));
+	Zombie	*horde;
+	int	numZombies = 10;
+	int	count = 0;
+
+	horde = zombieHorde(numZombies, "FallenBrain");
+	while (count < numZombies)
+	{
+		horde[count].announce();
+		count++;
+	}
+	delete[] horde;
+	return (0);
 }
