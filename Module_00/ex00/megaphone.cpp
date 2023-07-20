@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 13:14:38 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/19 19:10:48 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/20 02:01:16 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,24 @@
 
 int	main(int argc, char **argv)
 {
+	size_t	pos;
 	int	count;
-	int	pos;
+	std::string	word;
 	
 	if (argc == 1)
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::std::endl;
-	else
+		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
+	count = 1;
+	while (argc > 1 && count < argc)
 	{
-		count = 1;
-		while (count < argc)
+		pos = 0;
+		word = std::string(argv[count]);
+		while (pos < word.length())
 		{
-			pos = 0;
-			while (pos < (int)strlen(argv[count]))
-			{
-				std::cout << (char)toupper(argv[count][pos]);
-				pos++;
-			}
-			count++;
+			std::cout << char(std::toupper(word[pos]));
+			pos++;
 		}
-		std::cout << std::std::endl;
+		count++;
 	}
+	std::cout << std::endl;
 	return (0);
 }
