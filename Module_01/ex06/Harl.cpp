@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 18:23:48 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/20 20:33:33 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/20 20:39:45 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,15 @@ void	Harl::complain(std::string level)
 	switch (pos)
 	{
 		case 4:
-			std::cerr << "Error: There is no level with such a name" << std::endl;
+			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
 			break ;
 		default:
-			(this->*(functions[pos]))();
+			std::cout << "[ " << level << " ]" << std::endl;
+			while (pos < 4)
+			{
+				(this->*(functions[pos]))();
+				pos++;
+			}
 			break ;
 	}
 }
