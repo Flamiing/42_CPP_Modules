@@ -6,7 +6,7 @@
 #    By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/20 11:33:53 by alaaouam          #+#    #+#              #
-#    Updated: 2023/07/20 18:23:19 by alaaouam         ###   ########.fr        #
+#    Updated: 2023/07/21 10:54:38 by alaaouam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRC = main.cpp Harl.cpp
 OBJ = $(SRC:.cpp=.o)
 
 CPP = c++
-CPPFLAGS =  -Wall -Wextra -std=c++98
+CPPFLAGS =  -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
 #	RULES	#
