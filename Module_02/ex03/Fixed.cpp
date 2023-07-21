@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 10:00:07 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/21 19:07:03 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/21 17:28:12 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,32 +93,32 @@ Fixed Fixed::operator--(int)
 	return temp;
 }
 
-bool Fixed::operator>(const Fixed& other)
+bool Fixed::operator>(const Fixed &other)
 {
 	return (_value > other._value);
 }
 
-bool Fixed::operator<(const Fixed& other)
+bool Fixed::operator<(const Fixed &other)
 {
 	return (_value < other._value);
 }
 
-bool Fixed::operator>=(const Fixed& other)
+bool Fixed::operator>=(const Fixed &other)
 {
 	return (_value >= other._value);
 }
 
-bool Fixed::operator<=(const Fixed& other)
+bool Fixed::operator<=(const Fixed &other)
 {
 	return (_value <= other._value);
 }
 
-bool Fixed::operator==(const Fixed& other)
+bool Fixed::operator==(const Fixed &other)
 {
 	return (_value == other._value);
 }
 
-bool Fixed::operator!=(const Fixed& other)
+bool Fixed::operator!=(const Fixed &other)
 {
 	return (_value != other._value);
 }
