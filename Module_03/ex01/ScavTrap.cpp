@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 21:06:59 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/22 01:57:11 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/22 02:05:21 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ ScavTrap::~ScavTrap(void)
 
 void ScavTrap::guardGate(void)
 {
-	std::cout << "ScavTrap " << this->getName() << " is guarding the gate! 🛡️";
+	std::cout << "ScavTrap " << this->getName() << " is guarding the gate! 🛡️" << std::endl;
 }
 
 void ScavTrap::attack(const std::string& target)

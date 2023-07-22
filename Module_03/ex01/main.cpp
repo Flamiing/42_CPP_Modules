@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 20:06:05 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/22 01:24:36 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/22 02:04:58 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int main(void)
 	robot.takeDamage(50);
 	robot.beRepaired(50);
 	robot.attack("Wall-E");
+	robot.guardGate();
 	robot.takeDamage(200);
 	robot.takeDamage(1);
 	return 0;
