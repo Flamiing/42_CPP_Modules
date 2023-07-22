@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 20:07:07 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/22 01:53:28 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/22 01:55:12 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ class ClapTrap
 		int getEnergy(void) const;
 		int getDamage(void) const;
 		void setName(std::string name);
-	private:
+		void reduceHealth(int amount);
+		void increaseHealth(int amount);
+		void reduceEnergy(void);
+	protected:
 		std::string _name;
 		int _hitPoints;
 		int _energyPoints;

@@ -6,18 +6,18 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 20:07:05 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/21 21:14:41 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/22 01:58:36 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(void) : _name("DEFAULT"), _hitPoints(10), _energyPoints(10), _attackDamage(0)
+ClapTrap::ClapTrap(void) : _name("DEFAULT"), _hitPoints(100), _energyPoints(50), _attackDamage(20)
 {
 	std::cout << "ClapTrap default constructor called" << std::endl;
 }
 
-ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0)
+ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(100), _energyPoints(50), _attackDamage(20)
 {
 	std::cout << "ClapTrap default constructor with name called" << std::endl;
 }
@@ -54,7 +54,7 @@ void ClapTrap::attack(const std::string& target)
 		std::cout << "ClapTrap " << this->getName() <<  " attacks "
 						   << target << ", causing " << this->getDamage()
 						   << " points of damage! 😡" << std::endl;
-		this->_energyPoints--;
+		this->reduceEnergy();
 	}
 }
 
@@ -66,7 +66,7 @@ void ClapTrap::takeDamage(unsigned int amount)
 	{
 		std::cout << "ClapTrap " << this->getName() <<  " got attacked causing "
 						   << amount << " points of damage! 😢" << std::endl;
-		this->_hitPoints -= amount;
+		this->reduceHealth(amount);
 		if (this->getHealth() <= 0)
 			std::cout << "ClapTrap " << this->getName() << " died! 😵" << std::endl;
 	}
@@ -80,8 +80,8 @@ void ClapTrap::beRepaired(unsigned int amount)
 	{
 		std::cout << "ClapTrap " << this->getName() <<  " repairs itself and recovers "
 						   << amount << "HP back! 😊" << std::endl;
-		this->_energyPoints--;
-		this->_hitPoints += amount;
+		this->reduceEnergy();
+		this->increaseHealth(amount);
 	}
 }
 
@@ -108,4 +108,19 @@ int ClapTrap::getDamage(void) const
 void ClapTrap::setName(std::string name)
 {
 	this->_name = name;
+}
+
+void ClapTrap::reduceHealth(int amount)
+{
+	this->_hitPoints -= amount;
+}
+
+void ClapTrap::increaseHealth(int amount)
+{
+	this->_hitPoints += amount;
+}
+
+void ClapTrap::reduceEnergy(void)
+{
+	this->_energyPoints--;
 }

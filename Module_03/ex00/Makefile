@@ -6,7 +6,7 @@
 #    By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/21 20:05:10 by alaaouam          #+#    #+#              #
-#    Updated: 2023/07/21 20:05:51 by alaaouam         ###   ########.fr        #
+#    Updated: 2023/07/22 02:01:21 by alaaouam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRC = main.cpp ClapTrap.cpp
 OBJ = $(SRC:.cpp=.o)
 
 CPP = c++
-CPPFLAGS =  -Wall -Wextra -Werror -std=c++98 -g3 -fsanitize=address
+CPPFLAGS =  -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
 #	RULES	#

@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/07/21 09:59:13 by alaaouam          #+#    #+#              #
-#    Updated: 2023/07/22 02:01:38 by alaaouam         ###   ########.fr        #
+#    Created: 2023/07/21 20:05:10 by alaaouam          #+#    #+#              #
+#    Updated: 2023/07/22 02:01:17 by alaaouam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,9 +17,9 @@ COLOR_OFF = \033[0m
 
 #	VARIABLES	#
 
-NAME = point
+NAME = ScavTrap
 
-SRC = main.cpp Fixed.cpp Point.cpp bsp.cpp
+SRC = main.cpp ClapTrap.cpp ScavTrap.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
