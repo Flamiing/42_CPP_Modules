@@ -6,16 +6,19 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 20:06:05 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/22 02:37:19 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/22 17:01:35 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int main(void)
 {
-	FragTrap robot("Wawawiwa");
+	DiamondTrap robot("Wawawiwa");
 
+	robot.attack("WALL-E");
+	robot.whoAmI();
 	robot.highFivesGuys();
+	robot.guardGate();
 	return 0;
 }
