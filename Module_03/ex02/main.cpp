@@ -6,27 +6,16 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 20:06:05 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/22 02:37:23 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/22 02:37:19 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int main(void)
 {
-	ScavTrap robot("Wawawiwa");
+	FragTrap robot("Wawawiwa");
 
-	size_t count = 0;
-	while (count < 48)
-	{
-		robot.attack("Wall-E");
-		count++;
-	}
-	robot.takeDamage(50);
-	robot.beRepaired(50);
-	robot.attack("Wall-E");
-	robot.guardGate();
-	robot.takeDamage(200);
-	robot.takeDamage(1);
+	robot.highFivesGuys();
 	return 0;
 }
