@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 12:43:07 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/23 14:14:12 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/23 15:08:13 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class WrongAnimal
 	public:
 		WrongAnimal(void);
 		WrongAnimal(const WrongAnimal& other);
-		~WrongAnimal(void);
+		virtual ~WrongAnimal(void);
 
 		WrongAnimal& operator=(const WrongAnimal& other);
 
