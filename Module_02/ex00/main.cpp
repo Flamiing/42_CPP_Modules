@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 10:00:03 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/21 11:11:43 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/24 00:25:22 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int	main(void)
 	Fixed c;
 	Fixed d;
 	
-	b.setRawBits(10);
 	a.setRawBits(3);
+	b.setRawBits(10);
 	
 	c = b;
 	
