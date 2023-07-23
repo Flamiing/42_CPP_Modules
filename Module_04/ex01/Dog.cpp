@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 12:43:00 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/23 15:37:34 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/23 16:39:26 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ Dog::Dog(void)
 {
 	std::cout << "✅ Dog default constructor called 🐶" << std::endl;
 	this->_type = "Dog";
+	this->_brain = new Brain();
 }
 
 Dog::Dog(const Dog& other)
@@ -26,6 +27,7 @@ Dog::Dog(const Dog& other)
 
 Dog::~Dog(void)
 {
+	delete this->_brain;
 	std::cout << "💥 Dog destructor called 🐶" << std::endl;
 }
 
@@ -40,4 +42,14 @@ Dog& Dog::operator=(const Dog& other)
 void Dog::makeSound(void) const
 {
 	std::cout << "* bark * 🐶" << std::endl;
+}
+
+void Dog::changeIdea(int index, const std::string idea)
+{
+	this->_brain->setIdea(index, idea);
+}
+
+std::string Dog::thinkIdea(int index) const
+{
+	return this->_brain->getIdea(index);
 }

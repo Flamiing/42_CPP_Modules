@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.cpp                                         :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/20 13:40:33 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/23 23:41:53 by alaaouam         ###   ########.fr       */
+/*   Created: 2023/07/22 17:39:03 by alaaouam          #+#    #+#             */
+/*   Updated: 2023/07/23 15:31:39 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Weapon.hpp"
+#ifndef ANIMAL_HPP
+# define ANIMAL_HPP
 
-Weapon::Weapon(std::string weaponType)
-{
-	this->_type = weaponType;
-}
+# include "Brain.hpp"
+# include <iostream>
 
-Weapon::~Weapon(void)
+class Animal
 {
-	
-}
+	public:
+		Animal(void);
+		Animal(const Animal& other);
+		virtual ~Animal(void);
 
-const std::string&	Weapon::getType(void) const
-{
-	return (this->_type);
-}
+		Animal& operator=(const Animal& other);
 
-void	Weapon::setType(std::string new_type)
-{
-	this->_type = new_type;
-}
+		virtual void makeSound(void) const;
+		std::string getType(void) const;
+	protected:
+		std::string _type;
+};
+
+#endif

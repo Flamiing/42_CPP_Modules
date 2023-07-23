@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.cpp                                         :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/20 13:40:33 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/23 23:41:53 by alaaouam         ###   ########.fr       */
+/*   Created: 2023/07/23 12:43:17 by alaaouam          #+#    #+#             */
+/*   Updated: 2023/07/23 16:39:29 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Weapon.hpp"
+#ifndef DOG_HPP
+# define DOG_HPP
 
-Weapon::Weapon(std::string weaponType)
-{
-	this->_type = weaponType;
-}
+# include "Animal.hpp"
+# include "Brain.hpp"
+# include <iostream>
 
-Weapon::~Weapon(void)
+class Dog : public Animal
 {
-	
-}
+	public:
+		Dog(void);
+		Dog(const Dog& other);
+		~Dog(void);
 
-const std::string&	Weapon::getType(void) const
-{
-	return (this->_type);
-}
+		Dog& operator=(const Dog& other);
 
-void	Weapon::setType(std::string new_type)
-{
-	this->_type = new_type;
-}
+		void makeSound(void) const;
+		void changeIdea(int index, const std::string idea);
+		std::string thinkIdea(int index) const;
+	private:
+		Brain* _brain;
+};
+
+#endif

@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 13:41:06 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/20 14:12:55 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/23 23:41:57 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Weapon
 	public:
 		Weapon(std::string weaponType);
 		~Weapon(void);
-		std::string	getType(void) const;
+		const std::string&	getType(void) const;
 		void	setType(std::string new_type);
 };
 

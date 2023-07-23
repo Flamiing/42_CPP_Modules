@@ -6,12 +6,13 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 16:21:42 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/20 18:19:19 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/23 23:59:52 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <fstream>
+#include <sstream>
 
 static int	openFiles(const std::string &filename, std::ifstream &input, std::ofstream &output)
 {
@@ -53,17 +54,15 @@ static int	readReplaceAndSave(const std::string &filename, const std::string &fi
 {
 	std::ifstream	input;
 	std::ofstream	output;
-	std::string	text;
-	char	c;
+	std::ostringstream	oss;
+	std::string	buffer;
 
 	if (openFiles(filename, input, output) == -1)
 		return (1);
-	while (input.get(c)) 
-	{
-		text += c;
-	}
-	findAndReplace(text, find, replace);
-	output << text;
+	oss << input.rdbuf();
+	buffer = oss.str();
+	findAndReplace(buffer, find, replace);
+	output << buffer;
 	input.close();
 	output.close();
 	return (0);

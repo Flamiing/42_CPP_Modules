@@ -6,13 +6,13 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 11:41:50 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/20 13:15:47 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/23 23:36:01 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-Zombie::Zombie()
+Zombie::Zombie(void)
 {
 
 }

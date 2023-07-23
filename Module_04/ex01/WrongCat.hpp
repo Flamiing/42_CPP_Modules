@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.cpp                                         :+:      :+:    :+:   */
+/*   WrongWrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/20 13:40:33 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/23 23:41:53 by alaaouam         ###   ########.fr       */
+/*   Created: 2023/07/23 12:43:09 by alaaouam          #+#    #+#             */
+/*   Updated: 2023/07/23 14:15:00 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Weapon.hpp"
+#ifndef WRONGWrongCat_HPP
+# define WRONGWrongCat_HPP
 
-Weapon::Weapon(std::string weaponType)
-{
-	this->_type = weaponType;
-}
+# include "WrongAnimal.hpp"
+# include <iostream>
 
-Weapon::~Weapon(void)
+class WrongCat : public WrongAnimal
 {
-	
-}
+	public:
+		WrongCat(void);
+		WrongCat(const WrongCat& other);
+		~WrongCat(void);
 
-const std::string&	Weapon::getType(void) const
-{
-	return (this->_type);
-}
+		WrongCat& operator=(const WrongCat& other);
 
-void	Weapon::setType(std::string new_type)
-{
-	this->_type = new_type;
-}
+		void makeSound(void) const;
+};
+
+#endif
