@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 12:43:13 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/23 16:33:18 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/25 11:08:57 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Cat : public Animal
 	public:
 		Cat(void);
 		Cat(const Cat& other);
-		~Cat(void);
+		virtual ~Cat(void);
 
 		Cat& operator=(const Cat& other);
 

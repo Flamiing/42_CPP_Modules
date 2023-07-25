@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 15:20:31 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/23 16:30:53 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/25 10:45:26 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,13 @@ void Brain::setIdea(int index, const std::string idea)
 	if (index > 99)
 		std::cout << "Animals don't think that much!" << std::endl;
 	else
-		this->_ideas[index] = idea;
+	{
+		if (idea.empty())
+			this->_ideas[index] = "NOTHING";
+		else
+			this->_ideas[index] = idea;
+		
+	}
 }
 
 std::string Brain::getIdea(int index) const
@@ -61,8 +67,12 @@ std::string Brain::getIdea(int index) const
 	if (index > 99)
 	{
 		std::cout << "Animals don't think that much!" << std::endl;
-		return ("NOTHING");
+		return "NOTHING";
 	}
 	else
+	{
+		if (this->_ideas[index].empty())
+			return "NOTHING";
 		return this->_ideas[index];
+	}
 }

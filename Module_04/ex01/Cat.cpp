@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 12:43:15 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/23 16:33:11 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/25 10:52:28 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ Cat::Cat(const Cat& other)
 {
 	std::cout << "✅ Cat default copy constructor called 🐱" << std::endl;
 	this->_type = other._type;
+	if (other._brain)
+		this->_brain = new Brain(*other._brain);
 }
 
 Cat::~Cat(void)
@@ -33,9 +35,13 @@ Cat::~Cat(void)
 
 Cat& Cat::operator=(const Cat& other)
 {
-	std::cout << "Cat copy assignment operator called 🐱" << std::endl;
+	std::cout << "✅ Cat copy assignment operator called 🐱" << std::endl;
 	if (this != &other)
+	{
 		_type = other._type;
+		delete _brain;
+		_brain = new Brain(*other._brain);
+	}
 	return *this;
 }
 

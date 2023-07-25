@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 12:43:00 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/23 16:39:26 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/25 10:52:41 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ Dog::Dog(const Dog& other)
 {
 	std::cout << "✅ Dog default copy constructor called 🐶" << std::endl;
 	this->_type = other._type;
+	if (other._brain)
+		this->_brain = new Brain(*other._brain);
 }
 
 Dog::~Dog(void)
@@ -33,9 +35,13 @@ Dog::~Dog(void)
 
 Dog& Dog::operator=(const Dog& other)
 {
-	std::cout << "Dog copy assignment operator called 🐶" << std::endl;
+	std::cout << "✅ Dog copy assignment operator called 🐶" << std::endl;
 	if (this != &other)
+	{
 		_type = other._type;
+		delete _brain;
+		_brain = new Brain(*other._brain);
+	}
 	return *this;
 }
 

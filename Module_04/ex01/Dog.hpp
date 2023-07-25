@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 12:43:17 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/23 16:39:29 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/25 11:09:02 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Dog : public Animal
 	public:
 		Dog(void);
 		Dog(const Dog& other);
-		~Dog(void);
+		virtual ~Dog(void);
 
 		Dog& operator=(const Dog& other);
 
