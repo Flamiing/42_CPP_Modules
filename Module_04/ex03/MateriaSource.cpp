@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 16:42:27 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/26 19:10:45 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/27 14:47:27 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,13 @@ MateriaSource::MateriaSource(const MateriaSource& other)
 
 MateriaSource::~MateriaSource(void)
 {
+	int pos = 0;
+	while (pos < 4)
+	{
+		if (this->_learned[pos] != NULL)
+			delete this->_learned[pos];
+		pos++;
+	}
 	if (INFO == 1)
 		std::cout << "MateriaSource destructor called" << std::endl;
 }
@@ -66,7 +73,7 @@ void MateriaSource::learnMateria(AMateria* learn)
 	int pos = 0;
 	while (pos < 4)
 	{
-		if (this->_learned[pos] != NULL)
+		if (this->_learned[pos] == NULL)
 		{
 			this->_learned[pos] = learn;
 			break ;
@@ -88,7 +95,7 @@ AMateria* MateriaSource::createMateria(std::string const & type)
 		}
 		pos++;
 	}
-	if (typeFound == 0)
+	if (typeFound == 1)
 	{
 		if (type == "ice")
 			return new Ice();

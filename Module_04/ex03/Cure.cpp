@@ -6,19 +6,19 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 11:31:49 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/26 18:54:28 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/27 13:58:06 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cure.hpp"
 
-Cure::Cure(void) : AMateria("Cure")
+Cure::Cure(void) : AMateria("cure")
 {
 	if (INFO == 1)
 		std::cout << "Cure default constructor called" << std::endl;
 }
 
-Cure::Cure(const Cure& other) : AMateria("Cure")
+Cure::Cure(const Cure& other) : AMateria("cure")
 {
 	if (INFO == 1)
 		std::cout << "Cure copy constructor called" << std::endl;

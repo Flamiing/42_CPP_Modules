@@ -6,7 +6,7 @@
 #    By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/22 17:36:33 by alaaouam          #+#    #+#              #
-#    Updated: 2023/07/26 19:32:49 by alaaouam         ###   ########.fr        #
+#    Updated: 2023/07/27 14:11:50 by alaaouam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRC = main.cpp AMateria.cpp Ice.cpp Cure.cpp Character.cpp MateriaSource.cpp
 OBJ = $(SRC:.cpp=.o)
 
 CPP = c++
-CPPFLAGS =  -Wall -Wextra -Werror -std=c++98 -g3 -fsanitize=address
+CPPFLAGS =  -Wall -Wextra -Werror -std=c++98 -g
 RM = rm -rf
 
 #	RULES	#

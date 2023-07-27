@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 12:01:30 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/26 18:52:39 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/27 13:31:59 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class AMateria
 {
 	public:
 		AMateria(void);
-		AMateria(const std::string type);
+		AMateria(std::string const & type);
 		AMateria(const AMateria& other);
 		virtual ~AMateria(void);
 		

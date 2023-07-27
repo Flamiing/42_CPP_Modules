@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 14:07:01 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/26 19:14:45 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/27 14:41:27 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ class Character : public ICharacter
 		virtual void use(int idx, ICharacter& target);
 	private:
 		std::string _name;
-		AMateria *_inventory[4];
+		AMateria* _inventory[4];
+		AMateria** _unequipped;
+		int _unequippedSize;
 };
 
 #endif
