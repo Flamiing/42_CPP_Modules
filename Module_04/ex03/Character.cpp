@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 14:06:59 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/27 14:43:57 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/27 16:09:24 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ Character::Character(const Character& other) : _name(other._name), _unequippedSi
 	while (pos < 4)
 	{
 		if (other._inventory[pos] != NULL)
-			this->_inventory[pos] = other._inventory[pos];
+			this->_inventory[pos] = other._inventory[pos]->clone();
 		else
 			this->_inventory[pos] = NULL;
 		pos++;
@@ -56,7 +56,7 @@ Character::Character(const Character& other) : _name(other._name), _unequippedSi
 	pos = 0;
 	while (pos < other._unequippedSize)
 	{
-		this->_unequipped[pos] = other._unequipped[pos];
+		this->_unequipped[pos] = other._unequipped[pos]->clone();
 		pos++;
 	}
 }
@@ -87,6 +87,7 @@ Character& Character::operator=(const Character& other)
 		std::cout << "Character assignment operator called" << std::endl;
 	if (this != &other)
 	{
+		this->_name = other._name;
 		int	pos = 0;
 		while (pos < 4)
 		{
@@ -103,14 +104,14 @@ Character& Character::operator=(const Character& other)
 			pos++;
 		}
 		delete[] this->_unequipped;
-		this->_unequipped = new AMateria*[other._unequippedSize];
+		this->_unequippedSize = other._unequippedSize;
+		this->_unequipped = new AMateria*[this->_unequippedSize];
 		pos = 0;
-		while (pos < other._unequippedSize)
+		while (pos < this->_unequippedSize)
 		{
-			this->_unequipped[pos] = other._unequipped[pos];
+			this->_unequipped[pos] = other._unequipped[pos]->clone();
 			pos++;
 		}
-		this->_unequippedSize = other._unequippedSize;
 	}
 	return *this;
 }
