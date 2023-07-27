@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 16:42:27 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/27 14:47:27 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/27 17:12:52 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,9 @@ MateriaSource& MateriaSource::operator=(const MateriaSource& other)
 		int pos = 0;
 		while (pos < 0)
 		{
-			this->_learned[pos] = other._learned[pos];
+			if (this->_learned[pos] != NULL)
+				delete this->_learned[pos];
+			this->_learned[pos] = other._learned[pos]->clone();
 			pos++;
 		}
 	}
@@ -80,6 +82,8 @@ void MateriaSource::learnMateria(AMateria* learn)
 		}
 		pos++;
 	}
+	if (pos == 4)
+		std::cout << "Cannot learn more materias" << std::endl;
 }
 
 AMateria* MateriaSource::createMateria(std::string const & type)
@@ -102,5 +106,7 @@ AMateria* MateriaSource::createMateria(std::string const & type)
 		else if (type == "cure")
 			return new Cure();
 	}
+	else if (typeFound == 0)
+		std::cout << "Cannot create an unknown materia of type " << type << std::endl; 
 	return 0;
 }
