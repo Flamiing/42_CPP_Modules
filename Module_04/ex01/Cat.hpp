@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 12:43:13 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/25 11:08:57 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/27 17:43:58 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class Cat : public Animal
 
 		Cat& operator=(const Cat& other);
 
-		void makeSound(void) const;
+		virtual void makeSound(void) const;
 		void changeIdea(int index, const std::string idea);
 		std::string thinkIdea(int index) const;
 	private:

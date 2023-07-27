@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 12:43:13 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/23 13:29:40 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/27 17:42:36 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class Cat : public Animal
 
 		Cat& operator=(const Cat& other);
 
-		void makeSound(void) const;
+		virtual void makeSound(void) const;
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 17:38:40 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/25 11:25:05 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/27 17:54:56 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ int main(void)
 	randomCat2 = *randomCat1;
 	randomCat1->changeIdea(0, "\"I love sleeping\"");
 	std::cout << "I am a " << randomCat2.getType() << " 🐱" << std::endl;
-	std::cout << "The randomDog 1 thinks: " << randomCat1->thinkIdea(0) << std::endl;
-	std::cout << "The randomDog 2 thinks: " << randomCat2.thinkIdea(0) << std::endl;
+	std::cout << "The randomCat 1 thinks: " << randomCat1->thinkIdea(0) << std::endl;
+	std::cout << "The randomCat 2 thinks: " << randomCat2.thinkIdea(0) << std::endl;
 	
 	std::cout << std::endl;
 	
@@ -93,9 +93,14 @@ int main(void)
 	
 	std::cout << std::endl;
 
-	Dog basic;
+	Dog basicDog;
 	{
-		Dog tmp = basic;
+		Dog tmpDog = basicDog;
+	}
+
+	Cat basicCat;
+	{
+		Cat tmpCat(basicCat);
 	}
 
 	std::cout << std::endl;
