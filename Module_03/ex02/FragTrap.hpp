@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 02:07:13 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/22 02:37:34 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/28 13:43:26 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ class FragTrap : public ClapTrap
 		FragTrap(const FragTrap& other);	
 		~FragTrap(void);
 
-		using ClapTrap::operator=;
+		FragTrap& operator=(const FragTrap& other);
+
 		void highFivesGuys(void);
 };
 

@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 21:06:56 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/22 02:20:00 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/28 13:41:57 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class ScavTrap : public ClapTrap
 		ScavTrap(const ScavTrap& other);
 		~ScavTrap(void);
 		
-		using ClapTrap::operator=;
+		ScavTrap& operator=(const ScavTrap& other);
 
 		void guardGate(void);
 		void attack(const std::string& target);

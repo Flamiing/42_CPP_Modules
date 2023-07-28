@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 02:41:34 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/22 17:04:01 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/28 13:56:25 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,19 @@ DiamondTrap::DiamondTrap(const DiamondTrap& other) : ClapTrap(other)
 DiamondTrap::~DiamondTrap(void)
 {
 	std::cout << "DiamondTrap destructor called" << std::endl;
+}
+
+DiamondTrap& DiamondTrap::operator=(const DiamondTrap& other)
+{
+	std::cout << "DiamondTrap copy assignment operator called" << std::endl;
+	if (this != &other)
+	{
+		_name = other._name;
+		_hitPoints = other._hitPoints;
+		_energyPoints = other._energyPoints;
+		_attackDamage = other._attackDamage;
+	}
+	return *this;
 }
 
 void DiamondTrap::whoAmI(void)

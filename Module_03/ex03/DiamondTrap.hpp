@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 02:41:47 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/22 17:02:46 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/28 13:57:05 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class DiamondTrap : virtual public ScavTrap, virtual public FragTrap
 		DiamondTrap(const DiamondTrap& other);
 		~DiamondTrap(void);
 
-		using ClapTrap::operator=;
+		DiamondTrap& operator=(const DiamondTrap& other);
 
 		void whoAmI(void);
 		using FragTrap::_hitPoints;

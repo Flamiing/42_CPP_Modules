@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 20:06:05 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/22 02:37:23 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/27 18:35:58 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 int main(void)
 {
 	ScavTrap robot("Wawawiwa");
+	ScavTrap robotCopy;
+	robotCopy = robot;
 
 	size_t count = 0;
 	while (count < 48)
@@ -28,5 +30,20 @@ int main(void)
 	robot.guardGate();
 	robot.takeDamage(200);
 	robot.takeDamage(1);
+
+	std::cout << "Copy ScavTrap:" << std::endl;
+
+	count = 0;
+	while (count < 48)
+	{
+		robotCopy.attack("Wall-E");
+		count++;
+	}
+	robotCopy.takeDamage(50);
+	robotCopy.beRepaired(50);
+	robotCopy.attack("Wall-E");
+	robotCopy.guardGate();
+	robotCopy.takeDamage(200);
+	robotCopy.takeDamage(1);
 	return 0;
 }

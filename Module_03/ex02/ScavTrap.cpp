@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 21:06:59 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/22 02:32:50 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/28 13:42:19 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,19 @@ ScavTrap::ScavTrap(const ScavTrap& other) : ClapTrap(other)
 ScavTrap::~ScavTrap(void)
 {
 	std::cout << "ScavTrap destructor called" << std::endl;
+}
+
+ScavTrap& ScavTrap::operator=(const ScavTrap& other)
+{
+	std::cout << "ScavTrap copy assignment operator called" << std::endl;
+	if (this != &other)
+	{
+		_name = other._name;
+		_hitPoints = other._hitPoints;
+		_energyPoints = other._energyPoints;
+		_attackDamage = other._attackDamage;
+	}
+	return *this;
 }
 
 void ScavTrap::guardGate(void)
