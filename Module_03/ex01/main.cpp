@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 20:06:05 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/27 18:35:58 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/07/28 14:02:47 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ int main(void)
 	count = 0;
 	while (count < 48)
 	{
-		robotCopy.attack("Wall-E");
+		robotCopy.attack("Monster");
 		count++;
 	}
 	robotCopy.takeDamage(50);
 	robotCopy.beRepaired(50);
-	robotCopy.attack("Wall-E");
+	robotCopy.attack("Monster");
 	robotCopy.guardGate();
 	robotCopy.takeDamage(200);
 	robotCopy.takeDamage(1);
