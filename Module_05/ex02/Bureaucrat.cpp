@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 15:50:27 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/29 19:52:35 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/08/02 13:50:19 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ void Bureaucrat::decrementGrade(void)
 	}
 }
 
-void Bureaucrat::signForm(Form& form)
+void Bureaucrat::signForm(AForm& form)
 {
 	if (form.getSigned())
 	{

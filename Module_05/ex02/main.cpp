@@ -6,30 +6,56 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 15:50:30 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/29 20:15:49 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/08/02 14:52:41 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int main(void)
 {
-	Bureaucrat ivan("Ivan", 4);
-	Bureaucrat carlos("Carlos", 55);
-	Form workContract("Work Contract", 50, 45);
-	Form wrongContract1("Work Contract", 0, 34);
-	Form wrongContract2("Work Contract", 151, 34);
-	Form wrongContract3("Work Contract", 33, 0);
-	Form wrongContract4("Work Contract", 33, 151);
+	Bureaucrat ivan("Ivan", 1);
+	Bureaucrat carlos("Carlos", 45);
+	Bureaucrat javi("Javi", 137);
+	Bureaucrat loser("Loser", 150);
 
-	std::cout << workContract << std::endl;
+	ShrubberyCreationForm shrubbery("home");
+	RobotomyRequestForm robotomy("Wall-E");
+	PresidentialPardonForm pardon("Wawawiwa");
 	
-	carlos.signForm(workContract);
-	ivan.signForm(workContract);
-	ivan.signForm(workContract);
+	std::cout << std::endl;
 
-	std::cout << workContract << std::endl;
-	
+	shrubbery.execute(ivan);
+	robotomy.execute(ivan);
+	pardon.execute(ivan);
+
+	std::cout << std::endl;
+
+	loser.signForm(shrubbery);
+	javi.signForm(shrubbery);
+	shrubbery.execute(loser);
+	shrubbery.execute(javi);
+
+	std::cout << std::endl;
+
+	javi.signForm(robotomy);
+	carlos.signForm(robotomy);
+	robotomy.execute(javi);
+	robotomy.execute(carlos);
+	robotomy.execute(carlos);
+
+	std::cout << std::endl;
+
+	carlos.signForm(pardon);
+	ivan.signForm(pardon);
+	pardon.execute(carlos);
+	pardon.execute(ivan);
+
+	std::cout << std::endl;
+
 	return 0;
 }

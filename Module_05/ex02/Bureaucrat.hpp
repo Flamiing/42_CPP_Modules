@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 15:50:29 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/29 19:58:30 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/08/02 14:40:04 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,9 @@
 
 # include <iostream>
 # include <exception>
-# include "Form.hpp"
+# include "AForm.hpp"
 
-# define INFO 0
-
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -35,7 +33,7 @@ class Bureaucrat
 		int getGrade(void) const;
 		void incrementGrade(void);
 		void decrementGrade(void);
-		void signForm(Form& form);
+		void signForm(AForm& form);
 
 		class GradeTooHighException : public std::exception
 		{

@@ -6,7 +6,7 @@
 #    By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/29 15:50:32 by alaaouam          #+#    #+#              #
-#    Updated: 2023/07/29 18:25:37 by alaaouam         ###   ########.fr        #
+#    Updated: 2023/08/02 15:00:54 by alaaouam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ COLOR_OFF = \033[0m
 
 NAME = Form
 
-SRC = main.cpp Bureaucrat.cpp Form.cpp
+SRC = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
@@ -40,6 +40,7 @@ clean:
 
 fclean: clean
 	@$(RM) $(NAME)
+	@$(RM) *_shrubbery
 	@echo "$(GREEN)<-> $(NAME) cleaned successfuly! <->$(COLOR_OFF)"
 
 re: fclean all

@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 17:56:42 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/07/29 20:12:23 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/08/02 12:33:38 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ Form::Form(const std::string name, const int requiredGradeSign, const int requir
 _name(name), _signed(false), _requiredGradeSign(requiredGradeSign), _requiredGradeExecute(requiredGradeExecute)
 {
 	if (INFO == 1)
-		std::cout << "Form copy constructor called" << std::endl;
+		std::cout << "Form copy constructor called with info" << std::endl;
 	try
 	{
 		if (requiredGradeSign < 1)
