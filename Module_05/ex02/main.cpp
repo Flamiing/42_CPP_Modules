@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 15:50:30 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/08/02 14:52:41 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/08/02 15:16:44 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,31 +29,52 @@ int main(void)
 	
 	std::cout << std::endl;
 
+	std::cout << shrubbery << std::endl;
+	std::cout << robotomy << std::endl;
+	std::cout << pardon << std::endl;
+	
+	std::cout << std::endl;
+
 	shrubbery.execute(ivan);
 	robotomy.execute(ivan);
 	pardon.execute(ivan);
+	ivan.executeForm(shrubbery);
+	ivan.executeForm(robotomy);
+	ivan.executeForm(pardon);
 
 	std::cout << std::endl;
 
 	loser.signForm(shrubbery);
 	javi.signForm(shrubbery);
-	shrubbery.execute(loser);
-	shrubbery.execute(javi);
+	loser.executeForm(shrubbery);
+	javi.executeForm(shrubbery);
 
 	std::cout << std::endl;
 
 	javi.signForm(robotomy);
 	carlos.signForm(robotomy);
-	robotomy.execute(javi);
-	robotomy.execute(carlos);
-	robotomy.execute(carlos);
+	javi.executeForm(robotomy);
+	carlos.executeForm(robotomy);
+	carlos.executeForm(robotomy);
 
 	std::cout << std::endl;
 
 	carlos.signForm(pardon);
 	ivan.signForm(pardon);
-	pardon.execute(carlos);
-	pardon.execute(ivan);
+	carlos.executeForm(pardon);
+	ivan.executeForm(pardon);
+
+	std::cout << std::endl;
+	
+	shrubbery.execute(loser);
+	robotomy.execute(loser);
+	pardon.execute(loser);
+
+	std::cout << std::endl;
+
+	std::cout << shrubbery << std::endl;
+	std::cout << robotomy << std::endl;
+	std::cout << pardon << std::endl;
 
 	std::cout << std::endl;
 

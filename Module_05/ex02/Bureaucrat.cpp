@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 15:50:27 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/08/02 13:50:19 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/08/02 15:21:19 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,17 @@ void Bureaucrat::signForm(AForm& form)
 	else if (!form.getSigned())
 		std::cout << this->getName() << " couldn’t sign " << form.getName() 
 							<< " because has not enough grade!" << std::endl;
+}
+
+void Bureaucrat::executeForm(AForm const & form)
+{
+	if (form.getSigned() && this->getGrade() <= form.getRequiredGradeExecute())
+	{
+		std::cout << this->getName() << " executed " << form.getName() << std::endl;
+		form.execute(*this);
+	}
+	else
+		std::cerr << this->getName() << " could't execute " << form.getName() << std::endl;
 }
 
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& bureaucrat) 
