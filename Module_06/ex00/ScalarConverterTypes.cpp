@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   types.cpp                                          :+:      :+:    :+:   */
+/*   ScalarConverterTypes.cpp                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 14:46:31 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/08/03 16:22:45 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/08/04 01:03:06 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "types.hpp"
+#include "ScalarConverterTypes.hpp"
 
 static bool isChar(const std::string& literal)
 {
@@ -28,12 +28,12 @@ static bool isInt(const std::string& literal)
 	int pos = 0;
 	int	len = literal.length();
 	
-	if (len > 10)
+	if (len > 10 && literal[0] != '-')
 		return false;
 	while (pos < len)
 	{
-		std::cout << "TEST\n";
-		if (!std::isdigit(literal[len]))
+		if ((!std::isdigit(literal[pos]) && literal[pos] != '-')
+			|| (literal[pos] == '-' && pos != 0))
 			return false;
 		pos++;
 	}
@@ -46,12 +46,13 @@ static bool isFloat(const std::string& literal)
 	int	len = literal.length();
 	int	dotCount = 0;
 	
-	if (len > 10)
+	if (len > 10 && literal[0] != '-')
 		return false;
 	while (pos < len)
 	{
-		if (!std::isdigit(literal[len]) && literal[pos] == 'f'
-			&& pos != (len - 1) && literal[pos] != '.')
+		if ((!std::isdigit(literal[len]) && literal[pos] == 'f'
+			&& pos != (len - 1) && literal[pos] != '-' && literal[pos] != '.')
+			|| (literal[pos] == '-' && pos != 0))
 			return false;
 		if (literal[pos] == '.')
 			dotCount++;
@@ -68,11 +69,13 @@ static bool isDouble(const std::string& literal)
 	int	len = literal.length();
 	int	dotCount = 0;
 	
-	if (len > 10)
+	if (len > 10 && literal[0] != '-')
 		return false;
 	while (pos < len)
 	{
-		if (!std::isdigit(literal[len]) && literal[pos] != '.')
+		if ((!std::isdigit(literal[pos])
+			&& literal[pos] != '-' && literal[pos] != '.')
+			|| (literal[pos] == '-' && pos != 0))
 			return false;
 		if (literal[pos] == '.')
 			dotCount++;

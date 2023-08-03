@@ -6,7 +6,7 @@
 #    By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/29 15:50:32 by alaaouam          #+#    #+#              #
-#    Updated: 2023/08/03 16:04:37 by alaaouam         ###   ########.fr        #
+#    Updated: 2023/08/04 01:10:53 by alaaouam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ COLOR_OFF = \033[0m
 
 NAME = convert
 
-SRC = main.cpp ScalarConverter.cpp types.cpp
+SRC = main.cpp ScalarConverter.cpp ScalarConverterTypes.cpp ScalarConverterUtils.cpp ScalarConverterPrint.cpp
 
 OBJ = $(SRC:.cpp=.o)
 

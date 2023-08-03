@@ -6,17 +6,17 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 12:34:20 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/08/03 14:46:50 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/08/04 00:46:18 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SCALARCONVERTER_HPP
 # define SCALARCONVERTER_HPP
 
-#include <iostream>
-#include <string>
-#include <cctype>
-#include "types.hpp"
+# include <iostream>
+# include <string>
+# include "ScalarConverterTypes.hpp"
+# include "ScalarConverterUtils.hpp"
 
 class ScalarConverter
 {
