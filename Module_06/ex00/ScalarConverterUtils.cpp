@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 00:36:09 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/08/04 02:12:47 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/08/04 02:36:40 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void conversion(Types type, char& charConverted, int& intConverted,
 	}
 }
 
-static size_t getLastDigitBeforePoint(const std::string& numberString)
+static size_t getLastDigitBeforePoint(std::string& numberString)
 {
 	size_t pos = 0;
 	size_t len = numberString.length();
@@ -83,32 +83,40 @@ static size_t getLastDigitBeforePoint(const std::string& numberString)
 			break ;
 		pos++;
 	}
+	numberString[pos - 1] = 0;
 	return pos;
 }
 
 bool hasOverflow(const std::string& literal)
 {
 	std::string numberString;
-	std::string lastDigitString;
 	int lastDigitInt;
 	int numberInt ;
 	size_t lastDigitIndex;
 	bool isNumber = onlyDigits(literal);
+	bool isNegative = false;
 
-	numberString = literal;
-	lastDigitIndex = getLastDigitBeforePoint(numberString);
-	numberString[lastDigitIndex - 1] = 0;
-	if (isNumber && ((literal[0] == '-' && lastDigitIndex > 11) || (literal[0] != '-' && lastDigitIndex > 10)))
-		return true;
 	if (!isNumber)
 		return false;
-	lastDigitIndex--;
-	lastDigitInt = std::atoi(literal.c_str() + lastDigitIndex);
+	numberString = literal;
+	lastDigitIndex = getLastDigitBeforePoint(numberString);
+	if (((literal[0] == '-' && lastDigitIndex > 11) || (literal[0] != '-' && lastDigitIndex > 10)))
+		return true;
+	lastDigitInt = std::atoi(literal.c_str() + lastDigitIndex - 1);
 	numberInt = std::atoi(numberString.c_str());
-	if (numberInt > 214748364 || (numberInt == 214748364 && lastDigitInt > 7))
-		return true;
-	else if (numberInt < -214748364 || (numberInt == -214748364 && lastDigitInt > 8))
-		return true;
-	else
-		return false;
+	if (numberInt < 0)
+	{
+		numberInt *= -1;
+		isNegative = true;
+	}
+	if (numberInt >= 214748364)
+	{
+		if (isNegative && numberInt == 214748364 && lastDigitInt > 8)
+			return true;
+		else if (!isNegative && numberInt == 214748364 && lastDigitInt > 7)
+			return true;
+		else if (numberInt > 214748364)
+			return true;
+	}
+	return false;
 }
