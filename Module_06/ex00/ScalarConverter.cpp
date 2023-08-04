@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 12:30:20 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/08/04 01:10:19 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/08/04 02:14:09 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,15 @@ void ScalarConverter::convert(const std::string& literal)
 	double doubleConverted;
 	std::string specialValue;
 	Types literalType = getType(literal);
+	bool checkOverflow = hasOverflow(literal);
 
 	if (literalType == EMPTY || literalType == INVALID
-		|| (literalType == INT && hasOverflow(literal)))
+		|| checkOverflow)
 	{
 		if (literalType == EMPTY)
 			std::cerr << "Error: Literal is empty and cannot be converted" << std::endl;
-		else if (literalType == INT)
-			std::cerr << "Error: Int overflow detected" << std::endl;
+		else if (checkOverflow)
+			std::cerr << "Error: Overflow detected" << std::endl;
 		else
 			std::cerr << "Error: Literal is invalid and cannot be converted" << std::endl;
 		return ;

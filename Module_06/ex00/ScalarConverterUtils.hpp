@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 00:32:03 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/08/04 01:06:25 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/08/04 02:11:52 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <iostream>
 # include <string>
 # include <cctype>
+
 # include "ScalarConverterTypes.hpp"
 
 bool hasOverflow(const std::string& literal);
@@ -26,5 +27,5 @@ void getMainType(Types type, const std::string& literal, std::string& specialVal
 char& charConverted, int& intConverted, float& floatConverted, double& doubleConverted);
 void conversion(Types type, char& charConverted, int& intConverted,
 		float& floatConverted, double& doubleConverted);
-
+		
 #endif

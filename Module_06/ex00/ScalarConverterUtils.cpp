@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 00:36:09 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/08/04 01:08:17 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/08/04 02:12:47 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,20 @@ void conversion(Types type, char& charConverted, int& intConverted,
 	}
 }
 
+static size_t getLastDigitBeforePoint(const std::string& numberString)
+{
+	size_t pos = 0;
+	size_t len = numberString.length();
+	
+	while (pos < len)
+	{
+		if (numberString[pos] == '.')
+			break ;
+		pos++;
+	}
+	return pos;
+}
+
 bool hasOverflow(const std::string& literal)
 {
 	std::string numberString;
@@ -79,13 +93,16 @@ bool hasOverflow(const std::string& literal)
 	int lastDigitInt;
 	int numberInt ;
 	size_t lastDigitIndex;
+	bool isNumber = onlyDigits(literal);
 
-	lastDigitIndex = literal.length();
-	if ((literal[0] == '-' && lastDigitIndex > 11) || (literal[0] != '-' && lastDigitIndex > 10))
-		return true;
-	lastDigitIndex--;
 	numberString = literal;
-	numberString[lastDigitIndex] = 0;
+	lastDigitIndex = getLastDigitBeforePoint(numberString);
+	numberString[lastDigitIndex - 1] = 0;
+	if (isNumber && ((literal[0] == '-' && lastDigitIndex > 11) || (literal[0] != '-' && lastDigitIndex > 10)))
+		return true;
+	if (!isNumber)
+		return false;
+	lastDigitIndex--;
 	lastDigitInt = std::atoi(literal.c_str() + lastDigitIndex);
 	numberInt = std::atoi(numberString.c_str());
 	if (numberInt > 214748364 || (numberInt == 214748364 && lastDigitInt > 7))

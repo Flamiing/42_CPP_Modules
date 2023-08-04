@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 14:45:59 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/08/04 00:46:02 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/08/04 02:11:09 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ enum Types
 	EMPTY
 };
 
+bool onlyDigits(const std::string& literal);
 Types getType(const std::string& literal);
 
 #endif

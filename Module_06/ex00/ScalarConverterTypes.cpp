@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 14:46:31 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/08/04 01:03:06 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/08/04 02:13:24 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ static bool isInt(const std::string& literal)
 	int pos = 0;
 	int	len = literal.length();
 	
-	if (len > 10 && literal[0] != '-')
-		return false;
 	while (pos < len)
 	{
 		if ((!std::isdigit(literal[pos]) && literal[pos] != '-')
@@ -46,8 +44,6 @@ static bool isFloat(const std::string& literal)
 	int	len = literal.length();
 	int	dotCount = 0;
 	
-	if (len > 10 && literal[0] != '-')
-		return false;
 	while (pos < len)
 	{
 		if ((!std::isdigit(literal[len]) && literal[pos] == 'f'
@@ -69,8 +65,6 @@ static bool isDouble(const std::string& literal)
 	int	len = literal.length();
 	int	dotCount = 0;
 	
-	if (len > 10 && literal[0] != '-')
-		return false;
 	while (pos < len)
 	{
 		if ((!std::isdigit(literal[pos])
@@ -104,17 +98,43 @@ static Types isSpecialType(const std::string& literal)
 		return INVALID;
 }
 
+bool onlyDigits(const std::string& literal)
+{
+	size_t len = literal.length();
+	size_t pos = 0;
+	size_t dotCount = 0;
+
+	while (pos < len)
+	{
+		if (!std::isdigit(literal[pos]) && literal[pos] != '.'
+			&& literal[pos] != 'f' && literal[pos] != '-')
+			return false;
+		if (literal[pos] == 'f' && pos != len - 1)
+			return false;
+		if (literal[pos] == '-' && pos != 0)
+			return false;
+		if (literal[pos] == '.')
+			dotCount++;
+		pos++;
+	}
+	if (dotCount > 1)
+		return false;
+	return true;
+}
+
 Types getType(const std::string& literal)
 {
+	bool isNumber = onlyDigits(literal);
+	
 	if (literal.empty())
 		return EMPTY;
 	if (isChar(literal))
 		return CHAR;
-	if (isInt(literal))
+	if (isNumber && isInt(literal))
 		return INT;
-	if (isFloat(literal))
+	if (isNumber && isFloat(literal))
 		return FLOAT;
-	if (isDouble(literal))
+	if (isNumber && isDouble(literal))
 		return DOUBLE;
 	return isSpecialType(literal);
 }
