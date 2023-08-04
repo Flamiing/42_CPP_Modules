@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 13:46:50 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/08/04 14:38:07 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/08/04 14:48:36 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,11 @@ int main(void)
 	subjectExampleTest();
 
 	std::cout << std::endl;
+
+	// This is a test to prove that the templates cannot be called with different types:
+	/* ::swap(string1, number2);
+	::min(string1, number2);
+	::max(string1, number2); */
 	
 	return 0;
 }
