@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 00:07:20 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/08/06 17:40:12 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/08/06 18:26:16 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,29 +111,25 @@ int Span::shortestSpan(void)
 	}
 }
 
-struct GenerateNumber 
-{
-    int& start;
-    GenerateNumber(int& n) : start(n) {}
-
-    int operator()()
-	{
-        return start++;
-    }
-};
-
 void Span::addMoreNumbers(const unsigned int n, int start)
 {
 	try
 	{
+		int end;
 		unsigned int spaceLeft = this->_max - this->_vec.size();
 		if (n > spaceLeft)
 		{
-			std::generate_n(std::back_inserter(this->_vec), spaceLeft, GenerateNumber(start));
+			end = start + spaceLeft;
+			for (int num = start; num < end; num++)
+				this->_vec.push_back(num);
 			throw Span::MaxNumIntegersReached();
 		}
 		else
-			std::generate_n(std::back_inserter(this->_vec), n, GenerateNumber(start));
+		{
+			end = start + n;
+			for (int num = start; num < end; num++)
+				this->_vec.push_back(num);
+		}
 	}
 	catch (const std::exception & e)
 	{
