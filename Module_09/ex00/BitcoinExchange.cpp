@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:57:15 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/08/08 14:16:55 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/08/08 15:24:38 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -262,13 +262,21 @@ bool hasOverflow(const std::string& literal)
 
 ErrorType invalidValue(const std::string& value, const bool& error)
 {
+	bool overflowDetected = hasOverflow(value);
+
 	if (!onlyDigits(value))
 	{
 		if (!error)
 			std::cout << "Error: value is invalid." << std::endl;
 		return ERROR_INVALID;
 	}
-	 if (hasOverflow(value))
+	 if (overflowDetected && value[0] != '-')
+	{
+		if (!error)
+			std::cout << "Error: too large a number." << std::endl;
+		return ERROR_OVERFLOW;
+	}
+	else if (!overflowDetected && std::atoi(value.c_str()) > 1000)
 	{
 		if (!error)
 			std::cout << "Error: too large a number." << std::endl;
@@ -348,7 +356,7 @@ float getResult(BitcoinExchange::Database& database, std::string& date, float& b
 		if (isNearDate(nearestDate, iter, date))
 			nearestDate = iter;
 		if (iter->first == date)
-			return iter->second;
+			return iter->second * btc;
 		iter++;
 	}
 	return nearestDate->second * btc;
