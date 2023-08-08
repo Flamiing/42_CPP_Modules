@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:56:28 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/08/08 14:00:55 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/08/08 15:46:30 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ static int openFiles(std::ifstream& dbFile, std::ifstream& inputDbFile, const st
 	dbFile.open(CSV_FILE, std::ios::in);
 	if (!dbFile.is_open())
 	{
-		std::cerr << "Error: can't open file or is not accessible." << std::endl;
+		std::cerr << "Error: could not open database file." << std::endl;
 		return (-1);
 	}
 	else if (dbFile.peek() == std::ifstream::traits_type::eof())
 	{
 		dbFile.close();
-		std::cerr << "Error: file is empty." << std::endl;
+		std::cerr << "Error: database file is empty." << std::endl;
 		return (-1);
 	}
 	inputDbFile.open(filename, std::ios::in);

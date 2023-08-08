@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:56:47 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/08/08 13:34:34 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/08/08 15:38:06 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,6 @@
 # include <map>
 
 # define CSV_FILE "data.csv"
-
-enum ErrorType
-{
-	ERROR_OVERFLOW,
-	ERROR_NEGATIVE,
-	ERROR_INVALID, 
-	VALID
-};
 
 class BitcoinExchange
 {
@@ -48,8 +40,9 @@ class BitcoinExchange
 		Database _inputDatabase;
 };
 
+void checkInvalidFormat(const std::string& line, bool& error);
 bool invalidDate(const std::string& date);
-ErrorType invalidValue(const std::string& value, const bool& error);
+void checkInvalidValue(const std::string& value, bool& error);
 bool wrongYear(const std::string& date);
 float getResult(BitcoinExchange::Database& database, std::string& date, float& btc);
 

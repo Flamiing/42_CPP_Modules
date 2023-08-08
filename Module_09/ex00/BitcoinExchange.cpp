@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:57:15 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/08/08 15:24:38 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/08/08 15:42:20 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void BitcoinExchange::printValues(std::ifstream& file)
 	float result;
 	float floatValue;
 	bool error;
-	ErrorType valueError = VALID;
 	
 	std::getline(file, line);
 	if (line != "date | value")
@@ -66,6 +65,7 @@ void BitcoinExchange::printValues(std::ifstream& file)
 	while (std::getline(file, line))
 	{
 		error = false;
+		checkInvalidFormat(line, error);
 		std::stringstream ss(line);
 		std::getline(ss, date, '|');
 		std::getline(ss, value, '|');
@@ -73,14 +73,12 @@ void BitcoinExchange::printValues(std::ifstream& file)
 			date.erase(date.length() - 1, 1);
 		if (value[0] == ' ')
 			value.erase(0, 1);
-		if (invalidDate(date))
+		if (!error && invalidDate(date))
 		{
 			error = true;
 			std::cout << "Error: bad input => " << line << std::endl;
 		}
-		valueError = invalidValue(value, error);
-		if (!error && valueError != VALID)
-			error = true;
+		checkInvalidValue(value, error);
 		if (!error)
 		{
 			if (wrongYear(date))
@@ -260,7 +258,7 @@ bool hasOverflow(const std::string& literal)
 	return false;
 }
 
-ErrorType invalidValue(const std::string& value, const bool& error)
+void checkInvalidValue(const std::string& value, bool& error)
 {
 	bool overflowDetected = hasOverflow(value);
 
@@ -268,27 +266,48 @@ ErrorType invalidValue(const std::string& value, const bool& error)
 	{
 		if (!error)
 			std::cout << "Error: value is invalid." << std::endl;
-		return ERROR_INVALID;
+		error = true;
 	}
-	 if (overflowDetected && value[0] != '-')
+	else  if (overflowDetected && value[0] != '-')
 	{
 		if (!error)
 			std::cout << "Error: too large a number." << std::endl;
-		return ERROR_OVERFLOW;
+		error = true;
 	}
 	else if (!overflowDetected && std::atoi(value.c_str()) > 1000)
 	{
 		if (!error)
 			std::cout << "Error: too large a number." << std::endl;
-		return ERROR_OVERFLOW;
+		error = true;
 	}
 	else if (value[0] == '-')
 	{
 		if (!error)
 			std::cout << "Error: not a positive number." << std::endl;
-		return ERROR_NEGATIVE;
+		error = true;
 	}
-	return VALID;
+}
+
+// Check Invalid Format:
+void checkInvalidFormat(const std::string& line, bool& error)
+{
+	int pipeCount = 0;
+	int spaceCount = 0;
+
+	size_t pos = 0;
+	while (pos < line.length())
+	{
+		if (line[pos] == '|')
+			pipeCount++;
+		if (line[pos] == ' ')
+			spaceCount++;
+		pos++;
+	}
+	if (pipeCount != 1 || spaceCount != 2)
+	{
+		error = true;
+		std::cout << "Error: bad input => " << line << std::endl;
+	}
 }
 
 // Get near date functions:
