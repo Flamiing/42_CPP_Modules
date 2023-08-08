@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:57:15 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/08/08 13:38:01 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/08/08 14:16:55 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ void BitcoinExchange::saveDatabase(std::ifstream& file)
 	while (std::getline(file, line))
 	{
 		std::stringstream ss(line);
-		std::getline(ss, date, '\'');
-		std::getline(ss, exchangeRate, '\'');
+		std::getline(ss, date, ',');
+		std::getline(ss, exchangeRate, ',');
 		this->_database.insert(std::make_pair(date, std::atof(exchangeRate.c_str())));
 	}
 }
@@ -61,14 +61,18 @@ void BitcoinExchange::printValues(std::ifstream& file)
 	ErrorType valueError = VALID;
 	
 	std::getline(file, line);
+	if (line != "date | value")
+		std::cout << "Error: bad header." << std::endl;
 	while (std::getline(file, line))
 	{
 		error = false;
 		std::stringstream ss(line);
 		std::getline(ss, date, '|');
 		std::getline(ss, value, '|');
-		date.erase(date.length() - 1, 1);
-		value.erase(0, 1);
+		if (date[date.length() - 1] == ' ')
+			date.erase(date.length() - 1, 1);
+		if (value[0] == ' ')
+			value.erase(0, 1);
 		if (invalidDate(date))
 		{
 			error = true;
@@ -80,13 +84,13 @@ void BitcoinExchange::printValues(std::ifstream& file)
 		if (!error)
 		{
 			if (wrongYear(date))
+				std::cout << "Error: bitcoin was not available at this date => " << date << std::endl;
+			else
 			{
-				std::cout << "Error: Bitcoin was not available at this date => " << date << std::endl;
-				return ;
+				floatValue = std::atof(value.c_str());
+				result = getResult(this->_database, date, floatValue);
+				std::cout << date << " => " << value << " = " << result << std::endl;
 			}
-			floatValue = std::atof(value.c_str());
-			result = getResult(this->_database, date, floatValue);
-			std::cout << date << " => " << value << " = " << result << std::endl;
 		}
 	}
 }
@@ -102,17 +106,34 @@ static bool notDigit(char c)
 		return true;
 }
 
+static bool isLeapYear(int year)
+{
+  if (year % 400 == 0)
+    return true;
+  else if (year % 100 == 0)
+    return false;
+  else if (year % 4 == 0)
+    return true;
+  else
+    return false;
+}
+
 static bool wrongNumDaysInMonth(const std::string& date)
 {
+	int year = std::atoi(date.c_str());
 	int month = std::atoi(date.c_str() + 5);
 	int day = std::atoi(date.c_str() + 8);
 
-	if (day >= 1 && day <= 31 && (month == 1 || month == 3 || month == 5 || month == 7
+	if (day >= 1 && day <= 31 && (month == 1
+		|| month == 3 || month == 5 || month == 7
 		|| month == 8 || month == 10 || month == 12))
 		return false;
-	else if (day >= 1 && day <= 30 && (month == 4 || month == 6 || month == 9 || month == 11))
+	else if (day >= 1 && day <= 30 && (month == 4
+					|| month == 6 || month == 9 || month == 11))
 		return false;
-	else if (day >= 1 && day <= 29 && month == 2)
+	else if (month == 2
+				&& ((isLeapYear(year) && day >= 1 && day <= 29)
+				|| (!isLeapYear(year) && day >= 1 && day <= 28)))
 		return false;
 	return true;
 }
