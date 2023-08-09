@@ -6,7 +6,7 @@
 #    By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/29 15:50:32 by alaaouam          #+#    #+#              #
-#    Updated: 2023/08/07 13:55:23 by alaaouam         ###   ########.fr        #
+#    Updated: 2023/08/09 01:31:36 by alaaouam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ COLOR_OFF = \033[0m
 
 NAME = RPN
 
-SRC = main.cpp
+SRC = main.cpp RPN.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
