@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:58:38 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/08/09 02:59:42 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/08/09 03:47:39 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ static bool error(void)
 	return false;
 }
 
-static bool isNumber(char c)
+static bool isNumber(const char& c)
 {
 	if (c >= '0' && c <= '9')
 		return true;
 	return false;
 }
 
-static bool isOperator(char c)
+static bool isOperator(const char& c)
 {
 	if (c == '+' || c == '-' || c == '*' || c == '/')
 		return true;
@@ -56,6 +56,23 @@ static bool invalidNumber(const std::string& expression, size_t& pos)
 	return false;
 }
 
+static bool extraOperandOrSpace(const char& c, int& spaceCount, int& operandCount)
+{
+	if (c == ' ')
+		spaceCount++;
+	if (isOperator(c))
+		operandCount = 0;
+	if (spaceCount > 1)
+		return true;
+	if (c != ' ')
+		spaceCount = 0;
+	if (isNumber(c))
+		operandCount++;
+	if (operandCount > 2)
+		return true;
+	return false;
+}
+
 static bool parseExpression(const std::string& expression)
 {
 	size_t pos = 0;
@@ -66,17 +83,10 @@ static bool parseExpression(const std::string& expression)
 		return false;
 	while (pos < expression.length())
 	{
-		if (expression[pos] == ' ')
-			spaceCount++;
-		if (isOperator(expression[pos]))
-			operandCount = 0;
-		if (spaceCount > 1)
+		if (extraOperandOrSpace(expression[pos], spaceCount, operandCount))
 			return false;
-		if (expression[pos] != ' ')
-			spaceCount = 0;
-		if (isNumber(expression[pos]))
-			operandCount++;
-		if (operandCount > 2)
+		if (pos < expression.length() - 1 && expression[pos] == '-'
+			&& isNumber(expression[pos + 1]))
 			return false;
 		if (invalidNumber(expression, pos))
 			return false;
@@ -94,6 +104,18 @@ static bool parseExpression(const std::string& expression)
 		pos++;
 	}
 	return true;
+}
+
+static void operations(std::stack<float>& stack, const std::string& token, float* operands)
+{
+	if (token == "+")
+		stack.push(operands[0] + operands[1]);
+	else if (token == "-")
+		stack.push(operands[0] - operands[1]);
+	else if (token == "*")
+		stack.push(operands[0] * operands[1]);
+	else if (token == "/")
+		stack.push(operands[0] / operands[1]);
 }
 
 static float evaluateExpression(const std::string& expression)
@@ -114,16 +136,7 @@ static float evaluateExpression(const std::string& expression)
 			operands[0] = stack.top();
 			stack.pop();
 			if (isOperator(token[0]))
-			{
-				if (token == "+")
-					stack.push(operands[0] + operands[1]);
-				else if (token == "-")
-					stack.push(operands[0] - operands[1]);
-				else if (token == "*")
-					stack.push(operands[0] * operands[1]);
-				else if (token == "/")
-					stack.push(operands[0] / operands[1]);
-			}
+				operations(stack, token, operands);
 		}
 	 }
 	 return stack.top();
