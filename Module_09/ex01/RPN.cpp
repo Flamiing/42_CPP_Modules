@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:58:38 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/08/09 02:19:56 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/08/09 02:59:42 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ static bool parseExpression(const std::string& expression)
 {
 	size_t pos = 0;
 	int spaceCount = 0;
+	int	operandCount = 0;
 
 	if (expression.empty())
 		return false;
@@ -67,10 +68,16 @@ static bool parseExpression(const std::string& expression)
 	{
 		if (expression[pos] == ' ')
 			spaceCount++;
+		if (isOperator(expression[pos]))
+			operandCount = 0;
 		if (spaceCount > 1)
 			return false;
 		if (expression[pos] != ' ')
 			spaceCount = 0;
+		if (isNumber(expression[pos]))
+			operandCount++;
+		if (operandCount > 2)
+			return false;
 		if (invalidNumber(expression, pos))
 			return false;
 		if (pos == 0 && isOperator(expression[pos]))
@@ -89,78 +96,12 @@ static bool parseExpression(const std::string& expression)
 	return true;
 }
 
-static float sum(const float *operands, const size_t size)
-{
-	float result;
-	size_t pos = 0;
-	
-	while (pos < size)
-	{
-		if (pos == 0)
-			result = operands[pos];
-		else
-			result = result + operands[pos];
-		pos++;
-	}
-	return result;
-}
-
-static float subtract(const float *operands, const size_t size)
-{
-	float result;
-	size_t pos = 0;
-	
-	while (pos < size)
-	{
-		if (pos == 0)
-			result = operands[pos];
-		else
-			result = result - operands[pos];
-		pos++;
-	}
-	return result;
-}
-
-static float multiply(const float *operands, const size_t size)
-{
-	float result;
-	size_t pos = 0;
-	
-	while (pos < size)
-	{
-		if (pos == 0)
-			result = operands[pos];
-		else
-			result = result * operands[pos];
-		pos++;
-	}
-	return result;
-}
-
-static float divide(const float *operands, const size_t size)
-{
-	float result;
-	size_t pos = 0;
-	
-	while (pos < size)
-	{
-		if (pos == 0)
-			result = operands[pos];
-		else
-			result = result / operands[pos];
-		pos++;
-	}
-	return result;
-}
-
 static float evaluateExpression(const std::string& expression)
 {
 	std::stack<float> stack;
 	std::istringstream iss(expression);
  	std::string token;
-	size_t operandCount = 0;
-	ssize_t pos;
-	float *operands;
+	float operands[2];
 
 	 while (iss >> token)
 	 {
@@ -168,27 +109,20 @@ static float evaluateExpression(const std::string& expression)
 			stack.push(std::atof(token.c_str()));
 		else
 		{
-			operandCount = stack.size();
-			operands = new float[operandCount];
-			pos = operandCount - 1;
-			while (pos >= 0)
-			{
-				operands[pos] = stack.top();
-				stack.pop();
-				pos--;
-			}
+			operands[1] = stack.top();
+			stack.pop();
+			operands[0] = stack.top();
+			stack.pop();
 			if (isOperator(token[0]))
 			{
 				if (token == "+")
-					stack.push(sum(operands, operandCount));
+					stack.push(operands[0] + operands[1]);
 				else if (token == "-")
-					stack.push(subtract(operands, operandCount));
+					stack.push(operands[0] - operands[1]);
 				else if (token == "*")
-					stack.push(multiply(operands, operandCount));
+					stack.push(operands[0] * operands[1]);
 				else if (token == "/")
-					stack.push(divide(operands, operandCount));
-				operandCount = 0;
-				delete[] operands;
+					stack.push(operands[0] / operands[1]);
 			}
 		}
 	 }
