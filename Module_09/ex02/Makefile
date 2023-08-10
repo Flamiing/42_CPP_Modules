@@ -6,7 +6,7 @@
 #    By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/29 15:50:32 by alaaouam          #+#    #+#              #
-#    Updated: 2023/08/07 13:55:40 by alaaouam         ###   ########.fr        #
+#    Updated: 2023/08/10 21:38:45 by alaaouam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,12 +19,12 @@ COLOR_OFF = \033[0m
 
 NAME = PmergeMe
 
-SRC = main.cpp
+SRC = main.cpp PmergeMe.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
 CPP = c++
-CPPFLAGS =  -Wall -Wextra -Werror -std=c++98
+CPPFLAGS =  -Wall -Wextra -Werror -std=c++98 -g3 -fsanitize=address
 RM = rm -rf
 
 #	RULES	#
