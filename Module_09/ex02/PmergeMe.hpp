@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:59:24 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/08/11 12:52:48 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/08/11 13:21:25 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,8 +155,8 @@ class PmergeMe
 			std::string unsorted;
 			std::vector<int> vecNum;
 			std::deque<int> deqNum;
-			double elapsedTimeVector;
-			double elapsedTimeDeque;
+			double elapsedTimeVector = 0;
+			double elapsedTimeDeque = 0;
 			
 			if (!parseNumbers(numbersStr))
 				return false;

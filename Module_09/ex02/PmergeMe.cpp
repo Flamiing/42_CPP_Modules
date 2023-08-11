@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:59:26 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/08/11 12:55:48 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/08/11 13:33:12 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,22 @@ static bool hasOverflow(std::string& literal)
 	return false;
 }
 
+static bool isDuplicate(const std::string& numbers, const std::string& number)
+{
+	std::istringstream iss(numbers);
+	std::string token;
+	size_t count = 0;
+
+	while (iss >> token)
+	{
+		if (token == number)
+			count++;
+		if (count > 1)
+			return true;
+	}
+	return false;
+}
+
 static bool invalidNumber(const std::string& numbersStr)
 {
 	std::istringstream iss(numbersStr);
@@ -79,7 +95,8 @@ static bool invalidNumber(const std::string& numbersStr)
 
 	while (iss >> token)
 	{
-		if (token[0] == '-' || hasOverflow(token))
+		if (token[0] == '-' || hasOverflow(token)
+			|| isDuplicate(numbersStr, token))
 			return true;
 	}
 	return false;
@@ -107,13 +124,6 @@ bool parseNumbers(const std::string& numbersStr)
 			return false;
 		if (!isNumber(numbersStr[pos]) && numbersStr[pos] != ' ')
 			return false;
-		size_t index = 0;
-		while (numbersStr[pos] != ' ' && index < numbersStr.length())
-		{
-			if (index != pos && numbersStr[index] == numbersStr[pos])
-				return false;
-			index++;
-		}
 		pos++;
 	}
 	if (invalidNumber(numbersStr))
@@ -125,6 +135,7 @@ void numbersToContainers(const std::string& unsorted,
 		std::vector<int>& vecNum, std::deque<int>& deqNum)
 {
 	int number;
+	size_t findEnd;
 
 	size_t pos = 0;
 	while (pos < unsorted.length())
@@ -134,6 +145,10 @@ void numbersToContainers(const std::string& unsorted,
 			number = std::atoi(unsorted.c_str() + pos);
 			vecNum.push_back(number);
 			deqNum.push_back(number);
+			findEnd = pos;
+			while (unsorted[findEnd] && unsorted[findEnd] != ' ')
+				findEnd++;
+			pos = findEnd;
 		}
 		pos++;
 	}
@@ -142,17 +157,17 @@ void numbersToContainers(const std::string& unsorted,
 void sortVector(std::vector<int>& vecNum, double& elapsedTimeVector)
 {
 	clock_t start = clock();
-	mergeInsertSort(vecNum, 0, vecNum.size(), THRESHOLD);
+	mergeInsertSort(vecNum, 0, vecNum.size() - 1, THRESHOLD);
 	clock_t end = clock();
-	elapsedTimeVector = static_cast<double>(end - start) * 1000000.0 / CLOCKS_PER_SEC;
+	elapsedTimeVector = (static_cast<double>(end - start) * 1000000.0 / CLOCKS_PER_SEC) / 1000.0;
 }
 
 void sortDeque(std::deque<int>& deqNum, double& elapsedTimeDeque)
 {
 	clock_t start = clock();
-	mergeInsertSort(deqNum, 0, deqNum.size(), THRESHOLD);
+	mergeInsertSort(deqNum, 0, deqNum.size() - 1, THRESHOLD);
 	clock_t end = clock();
-	elapsedTimeDeque = static_cast<double>(end - start) * 1000000.0 / CLOCKS_PER_SEC;
+	elapsedTimeDeque = (static_cast<double>(end - start) * 1000000.0 / CLOCKS_PER_SEC) / 1000.0;
 }
 
 void printElements(const std::vector<int>& container)
@@ -177,7 +192,7 @@ void printResults(const std::string& unsorted, const std::vector<int>& vecNum,
 	std::cout << "Before:	" << unsorted << std::endl;
 	printElements(vecNum);
 	std::cout << "Time to process a range of " << vecNum.size()
-						<<" elements with std::vector : " << elapsedTimeVector << std::endl;
+						<<" elements with std::vector : " << elapsedTimeVector << "ms" << std::endl;
 	std::cout << "Time to process a range of " << deqNum.size()
-						<<" elements with std::Deque : " << elapsedTimeDeque << std::endl;
+						<<" elements with std::Deque : " << elapsedTimeDeque << "ms" << std::endl;
 }
