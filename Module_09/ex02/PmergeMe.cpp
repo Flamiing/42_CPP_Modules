@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:59:26 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/08/11 13:33:12 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/08/11 18:54:07 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ bool parseNumbers(const std::string& numbersStr)
 			spaceCount = 0;
 		if (numbersStr[pos] == ' ')
 			spaceCount++;
-		if (spaceCount > 2)
+		if (spaceCount > 1)
 			return false;
 		if (!isNumber(numbersStr[pos]) && numbersStr[pos] != ' ')
 			return false;
@@ -194,5 +194,5 @@ void printResults(const std::string& unsorted, const std::vector<int>& vecNum,
 	std::cout << "Time to process a range of " << vecNum.size()
 						<<" elements with std::vector : " << elapsedTimeVector << "ms" << std::endl;
 	std::cout << "Time to process a range of " << deqNum.size()
-						<<" elements with std::Deque : " << elapsedTimeDeque << "ms" << std::endl;
+						<<" elements with std::deque : " << elapsedTimeDeque << "ms" << std::endl;
 }

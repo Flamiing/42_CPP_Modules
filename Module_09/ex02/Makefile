@@ -6,7 +6,7 @@
 #    By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/29 15:50:32 by alaaouam          #+#    #+#              #
-#    Updated: 2023/08/11 12:51:53 by alaaouam         ###   ########.fr        #
+#    Updated: 2023/08/11 13:37:37 by alaaouam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRC = main.cpp PmergeMe.cpp
 OBJ = $(SRC:.cpp=.o)
 
 CPP = c++
-CPPFLAGS =  -Wall -Wextra -Werror -std=c++98 -g3 -fsanitize=address
+CPPFLAGS =  -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
 #	RULES	#

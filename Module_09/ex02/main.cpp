@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:56:28 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/08/11 13:15:47 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/08/11 18:53:04 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ std::string concatenateIntoString(char** array)
 
 	while (array[pos])
 	{
-		if (!newStr.empty())
+		if (!newStr.empty() && newStr[newStr.length() - 1] != ' ')
 			newStr += " ";
 		newStr += array[pos];
 		pos++;
