@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:59:24 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/08/11 13:21:25 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/08/11 18:57:33 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,24 +75,30 @@ static void merge(Container& numbers, int left, int mid, int right)
     int rightPos = 0;
     int pos = left;
 
-    while (leftPos < num1 && rightPos < num2) {
-        if (leftContainer[leftPos] <= rightContainer[rightPos]) {
+    while (leftPos < num1 && rightPos < num2)
+    {
+        if (leftContainer[leftPos] <= rightContainer[rightPos])
+        {
             numbers[pos] = leftContainer[leftPos];
             leftPos++;
-        } else {
+        }
+        else
+        {
             numbers[pos] = rightContainer[rightPos];
             rightPos++;
         }
         pos++;
     }
 
-    while (leftPos < num1) {
+    while (leftPos < num1)
+    {
         numbers[pos] = leftContainer[leftPos];
         leftPos++;
         pos++;
     }
 
-    while (rightPos < num2) {
+    while (rightPos < num2)
+    {
         numbers[pos] = rightContainer[rightPos];
         rightPos++;
         pos++;
@@ -102,10 +108,12 @@ static void merge(Container& numbers, int left, int mid, int right)
 template<typename Container>
 static void insertionSort(Container& numbers, int left, int right)
 {
-    for (int pos = left + 1; pos <= right; ++pos) {
+    for (int pos = left + 1; pos <= right; ++pos)
+    {
         int key = numbers[pos];
         int index = pos - 1;
-        while (index >= left && numbers[index] > key) {
+        while (index >= left && numbers[index] > key)
+        {
             numbers[index + 1] = numbers[index];
             --index;
         }
