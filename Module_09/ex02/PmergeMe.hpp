@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:59:24 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/08/11 18:57:33 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/08/11 19:00:48 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,25 +33,22 @@ template<typename Container>
 void getSortedContainer(Container& sorted, std::vector<int>& vecNum, std::deque<int>& deqNum)
 {
     const std::type_info& type = typeid(sorted);
-	typename Container::iterator sortedIter = sorted.begin();
 
     if (type == typeid(vecNum))
     {
         typename std::vector<int>::iterator vecIter = vecNum.begin();
-        while (vecIter != vecNum.end() && sortedIter != sorted.end())
+        while (vecIter != vecNum.end())
         {
-            *sortedIter = *vecIter;
-            sortedIter++;
+            sorted.push_back(*vecIter);
             vecIter++;
         }
     }
     else if (type == typeid(deqNum))
     {
         typename std::deque<int>::iterator deqIter = deqNum.begin();
-        while (deqIter != deqNum.end() && sortedIter != sorted.end())
+        while (deqIter != deqNum.end())
         {
-            *sortedIter = *deqIter;
-			sortedIter++;
+            sorted.push_back(*deqIter);
             deqIter++;
         }
     }
