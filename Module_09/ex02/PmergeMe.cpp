@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:59:26 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/08/10 21:42:39 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/08/11 12:55:48 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ PmergeMe::~PmergeMe(void) {}
 PmergeMe& PmergeMe::operator=(const PmergeMe& other) { (void)other; return *this; }
 
 /* FUNCTIONS */
-static bool onlyDigits(const std::string& literal)
+static bool onlyDigits(std::string& literal)
 {
 	size_t len = literal.length();
 	size_t pos = 0;
@@ -38,7 +38,7 @@ static bool onlyDigits(const std::string& literal)
 	return true;
 }
 
-static bool hasOverflow(const std::string& literal)
+static bool hasOverflow(std::string& literal)
 {
 	std::string numberString;
 	int lastDigitInt;
@@ -50,7 +50,7 @@ static bool hasOverflow(const std::string& literal)
 	if (!isNumber)
 		return false;
 	numberString = literal;
-	lastDigitIndex = literal.length() - 1;
+	lastDigitIndex = literal.size();
 	if (((literal[0] == '-' && lastDigitIndex > 11) || (literal[0] != '-' && lastDigitIndex > 10)))
 		return true;
 	lastDigitInt = std::atoi(literal.c_str() + lastDigitIndex - 1);
@@ -74,10 +74,10 @@ static bool hasOverflow(const std::string& literal)
 
 static bool invalidNumber(const std::string& numbersStr)
 {
-	std::stringstream ss(numbersStr);
+	std::istringstream iss(numbersStr);
 	std::string token;
 
-	while (ss >> token)
+	while (iss >> token)
 	{
 		if (token[0] == '-' || hasOverflow(token))
 			return true;

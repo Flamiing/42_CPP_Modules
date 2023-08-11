@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:59:24 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/08/10 21:32:20 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/08/11 12:52:48 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,29 @@ void printResults(const std::string& unsorted, const std::vector<int>& vecNum,
 template<typename Container>
 void getSortedContainer(Container& sorted, std::vector<int>& vecNum, std::deque<int>& deqNum)
 {
-	const std::type_info& type = typeid(sorted);
-	if (type == typeid(vecNum))
-		std::copy(vecNum.begin(), vecNum.end(), sorted.begin());
-	else if (type == typeid(deqNum))
-		std::copy(deqNum.begin(), deqNum.end(), sorted.begin());
+    const std::type_info& type = typeid(sorted);
+	typename Container::iterator sortedIter = sorted.begin();
+
+    if (type == typeid(vecNum))
+    {
+        typename std::vector<int>::iterator vecIter = vecNum.begin();
+        while (vecIter != vecNum.end() && sortedIter != sorted.end())
+        {
+            *sortedIter = *vecIter;
+            sortedIter++;
+            vecIter++;
+        }
+    }
+    else if (type == typeid(deqNum))
+    {
+        typename std::deque<int>::iterator deqIter = deqNum.begin();
+        while (deqIter != deqNum.end() && sortedIter != sorted.end())
+        {
+            *sortedIter = *deqIter;
+			sortedIter++;
+            deqIter++;
+        }
+    }
 }
 
 template<typename Container>
@@ -112,6 +130,22 @@ void mergeInsertSort(Container& numbers, int left, int right, int insertionThres
     }
 }
 
+template<typename Container>
+bool isSorted(const Container& container)
+{
+	typename Container::const_iterator num1 = container.begin();
+	typename Container::const_iterator num2 = num1 + 1;
+
+	while (num2 != container.end())
+	{
+		if (*num1 > *num2)
+			return false;
+		num1++;
+		num2++;
+	}
+	return true;
+}
+
 class PmergeMe
 {
 	public:
@@ -130,8 +164,10 @@ class PmergeMe
 
 			numbersToContainers(unsorted, vecNum, deqNum);
 
-			sortVector(vecNum, elapsedTimeVector);
-			sortDeque(deqNum, elapsedTimeDeque);
+			if (!isSorted(vecNum))
+				sortVector(vecNum, elapsedTimeVector);
+			if (!isSorted(deqNum))
+				sortDeque(deqNum, elapsedTimeDeque);
 
 			printResults(unsorted, vecNum, deqNum, elapsedTimeVector, elapsedTimeDeque);
 			
