@@ -17,7 +17,9 @@
 # include <exception>
 # include "Bureaucrat.hpp"
 
-# define INFO 0
+# ifndef INFO
+# 	define INFO 0
+# endif
 
 class Bureaucrat;
 
