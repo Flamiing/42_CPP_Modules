@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 00:32:03 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/08/04 02:11:52 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/09/29 17:29:46 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <iostream>
 # include <string>
 # include <cctype>
+# include <cmath>
 
 # include "ScalarConverterTypes.hpp"
 
