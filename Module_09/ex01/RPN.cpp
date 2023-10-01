@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/07 13:58:38 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/08/09 03:47:39 by alaaouam         ###   ########.fr       */
+/*   Created: 2023/10/01 23:23:31 by alaaouam          #+#    #+#             */
+/*   Updated: 2023/10/01 23:23:32 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,9 +118,8 @@ static void operations(std::stack<float>& stack, const std::string& token, float
 		stack.push(operands[0] / operands[1]);
 }
 
-static float evaluateExpression(const std::string& expression)
+static float evaluateExpression(const std::string& expression, std::stack<float>& stack)
 {
-	std::stack<float> stack;
 	std::istringstream iss(expression);
  	std::string token;
 	float operands[2];
@@ -131,8 +130,12 @@ static float evaluateExpression(const std::string& expression)
 			stack.push(std::atof(token.c_str()));
 		else
 		{
+			if (stack.empty())
+                return 0.0f;
 			operands[1] = stack.top();
 			stack.pop();
+			if (stack.empty())
+                return 0.0f;
 			operands[0] = stack.top();
 			stack.pop();
 			if (isOperator(token[0]))
@@ -147,6 +150,9 @@ bool RPN::reversePolishNotation(const std::string& expression, float& result)
 	if (!parseExpression(expression))
 		return error();
 	
-	result = evaluateExpression(expression);
+	std::stack<float> stack;
+	result = evaluateExpression(expression, stack);
+	if (stack.empty())
+		return error(); 
 	return true;
 }
