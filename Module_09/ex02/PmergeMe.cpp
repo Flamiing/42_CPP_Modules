@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:59:26 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/08/11 18:54:07 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/10/01 23:30:16 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,8 @@ bool parseNumbers(const std::string& numbersStr)
 {
 	int spaceCount = 0;
 
+	if (numbersStr.empty())
+		return false;
 	size_t pos = 0;
 	while (pos < numbersStr.length())
 	{
