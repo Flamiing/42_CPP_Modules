@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:57:15 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/08/08 15:42:20 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/10/02 00:04:37 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -360,6 +360,27 @@ static bool isNearDate(BitcoinExchange::Iterator& nearestDate,
 	return false;
 }
 
+static bool isBeforeDate(BitcoinExchange::Iterator& newDate, std::string& date)
+{
+	int year, month, day;
+	int newYear, newMonth, newDay;
+	
+	getDate(date, year, month, day);
+	getDate(newDate->first, newYear, newMonth, newDay);
+
+	if (newYear < year)
+		return true;
+	else if (newYear == year)
+	{
+		if (newMonth < month)
+			return true;
+		else if (newMonth == month)
+			if (newDay < day)
+				return true;
+	}
+	return false;
+}
+
 // Get value of the Bitcoins:
 float getResult(BitcoinExchange::Database& database, std::string& date, float& btc)
 {
@@ -372,7 +393,7 @@ float getResult(BitcoinExchange::Database& database, std::string& date, float& b
 	{
 		if (iter == database.begin())
 			nearestDate = iter;
-		if (isNearDate(nearestDate, iter, date))
+		if (isNearDate(nearestDate, iter, date) && isBeforeDate(iter, date))
 			nearestDate = iter;
 		if (iter->first == date)
 			return iter->second * btc;
