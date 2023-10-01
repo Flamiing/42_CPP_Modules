@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:57:15 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/10/02 00:04:37 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/10/02 00:12:15 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,7 +176,7 @@ bool invalidDate(const std::string& date)
 			return true;
 		else if (pos == 9)
 		{
-			if (((date[pos - 1] == '3' && (date[pos] != '0' || date[pos] != '1'))
+			if (((date[pos - 1] == '3' && (date[pos] != '0' && date[pos] != '1'))
 				|| (date[pos - 1] < '3' && date[pos - 1] >= '0' && notDigit(date[pos]))))	
 				return true;
 		}
