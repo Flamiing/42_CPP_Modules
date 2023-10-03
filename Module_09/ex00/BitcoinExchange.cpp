@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:57:15 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/10/02 00:12:15 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/10/03 11:58:54 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -293,6 +293,7 @@ void checkInvalidFormat(const std::string& line, bool& error)
 {
 	int pipeCount = 0;
 	int spaceCount = 0;
+	int nbrCount = 0;
 
 	size_t pos = 0;
 	while (pos < line.length())
@@ -301,9 +302,11 @@ void checkInvalidFormat(const std::string& line, bool& error)
 			pipeCount++;
 		if (line[pos] == ' ')
 			spaceCount++;
+		if (spaceCount == 2 && line[pos] >= '0' && line[pos] <= '9')
+			nbrCount++;
 		pos++;
 	}
-	if (pipeCount != 1 || spaceCount != 2)
+	if (pipeCount != 1 || spaceCount != 2 || nbrCount == 0)
 	{
 		error = true;
 		std::cout << "Error: bad input => " << line << std::endl;
