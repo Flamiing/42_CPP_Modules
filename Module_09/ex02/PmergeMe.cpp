@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:59:26 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/10/01 23:30:16 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/10/05 03:14:13 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,34 +41,14 @@ static bool onlyDigits(std::string& literal)
 static bool hasOverflow(std::string& literal)
 {
 	std::string numberString;
-	int lastDigitInt;
-	int numberInt ;
-	size_t lastDigitIndex;
-	bool isNumber = onlyDigits(literal);
-	bool isNegative = false;
+	long long numberInt ;
 
-	if (!isNumber)
+	if (!onlyDigits(literal))
 		return false;
 	numberString = literal;
-	lastDigitIndex = literal.size();
-	if (((literal[0] == '-' && lastDigitIndex > 11) || (literal[0] != '-' && lastDigitIndex > 10)))
+	numberInt = std::atoll(numberString.c_str());
+	if (numberInt > 2147483647)
 		return true;
-	lastDigitInt = std::atoi(literal.c_str() + lastDigitIndex - 1);
-	numberInt = std::atoi(numberString.c_str());
-	if (numberInt < 0)
-	{
-		numberInt *= -1;
-		isNegative = true;
-	}
-	if (numberInt >= 214748364)
-	{
-		if (isNegative && numberInt == 214748364 && lastDigitInt > 8)
-			return true;
-		else if (!isNegative && numberInt == 214748364 && lastDigitInt > 7)
-			return true;
-		else if (numberInt > 214748364)
-			return true;
-	}
 	return false;
 }
 
