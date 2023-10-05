@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd ../ex02
+
 mkdir -p tester
 
 # SIMPLE TEST #
@@ -76,7 +78,7 @@ unsorted_numbers="2147483648 3 2 1"
 my_result=$(./PmergeMe $unsorted_numbers | grep "Error")
 echo $my_result > ./tester/my_result.txt
 
-result=$(cat ./tester/my_result.txt | wc -l)
+result=$(cat ./tester/my_result.txt | grep "Error" |wc -l)
 
 if [ $result != 0 ]; then
     echo -e "\033[32mTEST OVERFLOW PASSED!\033[0m"
@@ -90,7 +92,7 @@ unsorted_numbers="-123 3 2 1"
 my_result=$(./PmergeMe $unsorted_numbers | grep "Error")
 echo $my_result > ./tester/my_result.txt
 
-result=$(cat ./tester/my_result.txt | wc -l)
+result=$(cat ./tester/my_result.txt | grep "Error"  | wc -l)
 
 if [ $result != 0 ]; then
     echo -e "\033[32mTEST NEGATIVE NUMBER PASSED!\033[0m"
@@ -104,7 +106,7 @@ unsorted_numbers="3 3 2 1"
 my_result=$(./PmergeMe $unsorted_numbers | grep "Error")
 echo $my_result > ./tester/my_result.txt
 
-result=$(cat ./tester/my_result.txt | wc -l)
+result=$(cat ./tester/my_result.txt | grep "Error"  | wc -l)
 
 if [ $result != 0 ]; then
     echo -e "\033[32mTEST DUPLICATE NUMBER PASSED!\033[0m"
@@ -118,7 +120,7 @@ unsorted_numbers="33 234 4 54353453 3 a j"
 my_result=$(./PmergeMe $unsorted_numbers | grep "Error")
 echo $my_result > ./tester/my_result.txt
 
-result=$(cat ./tester/my_result.txt | wc -l)
+result=$(cat ./tester/my_result.txt | grep "Error"  | wc -l)
 
 if [ $result != 0 ]; then
     echo -e "\033[32mTEST CHAR THAT IS NOT NUMBER PASSED!\033[0m"
@@ -130,7 +132,7 @@ fi
 my_result=$(./PmergeMe | grep "Error")
 echo $my_result > ./tester/my_result.txt
 
-result=$(cat ./tester/my_result.txt | wc -l)
+result=$(cat ./tester/my_result.txt | grep "Error"  | wc -l)
 
 if [ $result != 0 ]; then
     echo -e "\033[32mTEST NO INPUT PASSED!\033[0m"

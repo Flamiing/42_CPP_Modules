@@ -1,6 +1,7 @@
 #!/bin/bash
 
-rm -rf my_output
+cd ../ex01
+
 ./RPN "8 9 * 9 - 9 - 9 - 4 - 1 +" >> my_output
 ./RPN "7 7 * 7 -" >> my_output
 ./RPN "1 2 * 2 / 2 * 2 4 - +" >> my_output

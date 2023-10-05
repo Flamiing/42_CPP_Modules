@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd ../ex00
+
 echo "date | value
 2005-02-02 || 0.1
 2011-09-14 abc| 390.57
