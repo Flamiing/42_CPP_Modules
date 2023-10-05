@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:59:26 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/10/05 03:14:13 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/10/05 22:19:16 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,22 +52,6 @@ static bool hasOverflow(std::string& literal)
 	return false;
 }
 
-static bool isDuplicate(const std::string& numbers, const std::string& number)
-{
-	std::istringstream iss(numbers);
-	std::string token;
-	size_t count = 0;
-
-	while (iss >> token)
-	{
-		if (token == number)
-			count++;
-		if (count > 1)
-			return true;
-	}
-	return false;
-}
-
 static bool invalidNumber(const std::string& numbersStr)
 {
 	std::istringstream iss(numbersStr);
@@ -75,8 +59,7 @@ static bool invalidNumber(const std::string& numbersStr)
 
 	while (iss >> token)
 	{
-		if (token[0] == '-' || hasOverflow(token)
-			|| isDuplicate(numbersStr, token))
+		if (token[0] == '-' || hasOverflow(token))
 			return true;
 	}
 	return false;
