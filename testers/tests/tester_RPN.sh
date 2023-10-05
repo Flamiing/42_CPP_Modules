@@ -21,6 +21,7 @@ cd ../ex01
 ./RPN "2 2" >> my_output
 ./RPN "2 / / /" >> my_output
 ./RPN "9 9 * 9 *" >> my_output
+./RPN "11 2 +" >> my_output
 
 echo "42
 42
@@ -40,7 +41,8 @@ Error
 Error
 Error
 Error
-729" > correct_output
+729
+Error" > correct_output
 
 my_output=$(diff my_output correct_output | wc -l)
 

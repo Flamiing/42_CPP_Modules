@@ -145,9 +145,9 @@ Usage: ./btc <database>" >> error_check
 my_output=$(diff my_output correct_output | wc -l)
 
 if [ $my_output -eq 0 ]; then
-    echo -e "\033[32mNORMAL TEST PASSED!\033[0m"
+    echo -e "\033[32mTEST NORMAL USE PASSED!\033[0m"
 else
-	echo -e "\033[31mNORMAL TEST FAILED!\033[0m"
+	echo -e "\033[31mTEST NORMAL USE FAILED!\033[0m"
 fi
 
 chmod 000 correctionInput.csv
@@ -161,9 +161,9 @@ chmod 666 data.csv
 my_output=$(diff my_output error_check | wc -l)
 
 if [ $my_output -eq 0 ]; then
-    echo -e "\033[32mFILE ERROR TEST PASSED!\033[0m"
+    echo -e "\033[32mTEST FILE ERROR PASSED!\033[0m"
 else
-	echo -e "\033[31mFILE ERROR TEST FAILED!\033[0m"
+	echo -e "\033[31mTEST FILE ERROR FAILED!\033[0m"
 fi
 
 rm -rf my_output correct_output invalidInput.txt subjectInput.txt correctionInput.csv emptyInput.txt error_check
