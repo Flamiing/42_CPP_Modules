@@ -6,7 +6,7 @@
 #    By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/29 15:50:32 by alaaouam          #+#    #+#              #
-#    Updated: 2023/08/09 01:31:36 by alaaouam         ###   ########.fr        #
+#    Updated: 2023/10/05 02:21:44 by alaaouam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,6 @@ clean:
 
 fclean: clean
 	@$(RM) $(NAME)
-	@$(RM) *_shrubbery
 	@echo "$(GREEN)<-> $(NAME) cleaned successfuly! <->$(COLOR_OFF)"
 
 re: fclean all
